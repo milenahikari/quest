@@ -4,7 +4,7 @@
       <div class="logo"></div>
 
     </div>
-    <h1 class="title">Busque pelas matérias que possui dificuldade e colabore compartilhando conhecimentos</h1>
+    <h1 class="title">Busque pelas matérias que possui dificuldade e colabore compartilhando conhecimentos.</h1>
     <Search/>
     <h3>Categorias</h3>
         
