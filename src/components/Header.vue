@@ -1,48 +1,39 @@
 <template>
   <section>
-    <div class="header-top">
-      <div class="logo"></div>
+    <v-toolbar flat height="98" color="white">
+      <v-container fluid class="pa-0 displayFlex">
+        <div>
+          <v-img :src="require('../../src/assets/img/logo.png')" height="39px" width="118px"/>
+        </div>
+        <div class="grayIcon">
+          <i class="fas fa-user-circle"></i>
+          <span>Login</span>
+        </div>
+      </v-container>
+    </v-toolbar>
 
-    </div>
-    <h1 class="title">Busque pelas matérias que possui dificuldade e colabore compartilhando conhecimentos.</h1>
-    <Search/>
-    <h3>Categorias</h3>
-        
+  <v-container fluid>
+    <h1>Busque pelas matérias que possui dificuldade e colabore compartilhando conhecimentos</h1>
+    <Card></Card>
+  </v-container>
   </section>
 </template>
 
 <script>
-
+import Card from './Card.vue';
 export default {
-
+  components: {
+    Card
+  }
 }
 </script>
 
 <style scoped>
-.header-top{
+.grayIcon{
+  width: 65px;
   display: flex;
-  justify-content: space-between;
-}
-.logo{
-  height: 38px;
-  width: 117px;
-  background-image: url("../assets/img/logo.png");
-  background-size: 100%;
-}
-.title{
-  font-size: 22px;
-  font-weight: bold;
-  margin-top:34px;
-}
-h3{
-  font-size: 16px;
-  font-weight: bold;
-}
-.categories{
-  display: flex;
-  justify-content: space-between;
-}
-a {
-  text-decoration: none;
+  justify-content: space-around;
+  align-items: center;
+  color: #707070;
 }
 </style>

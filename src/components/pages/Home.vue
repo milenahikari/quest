@@ -1,10 +1,20 @@
 <template>
-  <v-icon>fas fa-lock</v-icon>
+  <section>
+    <Header></Header>
+    <v-container fluid fill-height>
+      <v-layout>
+        <h1>Conteudo</h1>
+      </v-layout>
+    </v-container>
+  </section>
 </template>
 
 <script>
+import Header from '../Header.vue';
 export default {
-  
+  components: {
+    Header
+  }
 }
 </script>
 

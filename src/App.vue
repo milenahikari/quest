@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <v-container fluid fill-height>
-      <v-layout>
-        <router-view></router-view>
-      </v-layout>
-    </v-container>
+    <router-view></router-view>
   </div>
 </template>
 
