@@ -3,7 +3,7 @@
     <Header></Header>
     <v-container fluid fill-height>
       <v-layout>
-        <h1>Conteudo</h1>
+        <h1>Conteudo Home</h1>
       </v-layout>
     </v-container>
   </section>
