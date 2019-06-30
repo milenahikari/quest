@@ -4,12 +4,20 @@
   line-height: 1.5;
   color: #313131;
 }
-
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+} 
+button:active {
+  border-style: outset;
+}
+a {
+  text-decoration: none;
+}
+body {
+  background: #F9F9F9;
+}
 h1 {
   font-size: 22px;
   font-weight: bold;
-}
-.displayFlex {
-  display: flex;
-  justify-content: space-between;
 }
