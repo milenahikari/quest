@@ -2,9 +2,9 @@
   <section class="homeBackground">
     <Header></Header>
 
-    <v-container>
-      <v-layout row  justify-space-around wrap>
-        <v-flex xs12 sm6 lg4>
+    <v-container grid-list-xl>
+      <v-layout justify-center wrap>
+        <v-flex d-flex shrink>
           <Card 
             img      = "grupoestudo.png"
             position = "0px -15px"
@@ -14,7 +14,7 @@
             parteIII = "Combine o melhor momento para estudar"
             parteIV  = ""/>
         </v-flex>
-        <v-flex xs12 sm6 lg4>
+        <v-flex d-flex shrink>
             <Card 
             img      = "ensinar.png"
             position = "0px -55px" 
@@ -24,7 +24,7 @@
             parteIII = "Divirta-se ensinando e aprendendo"
             parteIV  = ""/>
         </v-flex>
-        <v-flex xs12 sm6 lg4>    
+        <v-flex d-flex shrink>    
             <Card 
             img      = "premio.jpg"
             position = "0px -20px"
