@@ -1,10 +1,11 @@
 <template>
   <v-container>
-    <v-layout>
-    </v-layout
+    <router-link to="/">
+      <v-icon >fas fa-chevron-left</v-icon>
+    </router-link>
 
     <v-flex>
-      <v-layout justify-center my-5>
+      <v-layout justify-center>
         <div>
           <v-img :src="require('../../../src/assets/img/logo.png')" height="69px" width="209px"/>
         </div>
