@@ -8,6 +8,12 @@
       <Category name="Física" icon="fas fa-atom"/>
       <Category name="Geografia" icon="fas fa-globe-africa"/>
       <Category name="História" icon="fas fa-archway"/>
+      <Category name="Inglês" icon="fas fa-language"/>
+      <Category name="Literatura" icon="fas fa-book-reader"/>
+      <Category name="Matemática" icon="fas fa-calculator"/>
+      <Category name="Português" icon="fas fa-book"/>
+      <Category name="Química" icon="fas fa-bong"/>
+      <Category name="Sociologia" icon="fas fa-running"/>
     </slick>
   </section>
 </template>
