@@ -1,31 +1,31 @@
 <template>
-  <section>
+  <section class="homeBackground">
     <Header></Header>
     <v-container>
       <Card 
-      img      = "grupoestudo.png"
-      position = "0px -15px"
-      title    = "APRENDA" 
-      parteI   = "Encontre a ajuda perfeita para entender a matéria"
-      parteII  = "Tire suas dúvidas com um amigo"
-      parteIII = "Combine o melhor momento para estudar"
-      parteIV  = ""/>
-    <Card 
-      img      = "ensinar.png"
-      position = "0px -55px" 
-      title    = "ENSINE" 
-      parteI   = "Compartilhe seu conhecimento"
-      parteII  = "Faça novas amizades"
-      parteIII = "Divirta-se ensinando e aprendendo"
-      parteIV  = ""/>
-    <Card 
-      img      = "premio.jpg"
-      position = "0px -20px"
-      title    = "CONQUISTE" 
-      parteI   = "Colabore ensinando e ganhe estrelas"
-      parteII  = "Cumpra metas e colecione pedras preciosas"
-      parteIII = "Seja um membro"
-      parteIV  = "É grátis :)"/>
+        img      = "grupoestudo.png"
+        position = "0px -15px"
+        title    = "APRENDA" 
+        parteI   = "Encontre a ajuda perfeita para entender a matéria"
+        parteII  = "Tire suas dúvidas com um amigo"
+        parteIII = "Combine o melhor momento para estudar"
+        parteIV  = ""/>
+      <Card 
+        img      = "ensinar.png"
+        position = "0px -55px" 
+        title    = "ENSINE" 
+        parteI   = "Compartilhe seu conhecimento"
+        parteII  = "Faça novas amizades"
+        parteIII = "Divirta-se ensinando e aprendendo"
+        parteIV  = ""/>
+      <Card 
+        img      = "premio.jpg"
+        position = "0px -20px"
+        title    = "CONQUISTE" 
+        parteI   = "Colabore ensinando e ganhe estrelas"
+        parteII  = "Cumpra metas e colecione pedras preciosas"
+        parteIII = "Seja um membro"
+        parteIV  = "É grátis :)"/>
     </v-container>
     <Footer></Footer>
   </section>
@@ -46,4 +46,7 @@ export default {
 </script>
 
 <style>
+.homeBackground {
+  background: #F9F9F9;
+}
 </style>

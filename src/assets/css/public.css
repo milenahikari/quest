@@ -15,9 +15,23 @@ a {
   text-decoration: none;
 }
 body {
-  background: #F9F9F9;
+  background: white;
 }
 h1 {
   font-size: 22px;
   font-weight: bold;
+}
+input {
+  width: 284px;
+  height: 45px;
+  padding: 5px;
+  border: 1px #9A1982 solid;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 8px 0px;
+  background-color: #F9F9F9;
+}
+.arrowIcon{
+  font-size: 14px;
+  color:#707070;
 }

@@ -4,20 +4,22 @@
       <v-container fluid class="pa-0">
         <v-layout justify-space-between>
           <div>
-            <v-img :src="require('../../src/assets/img/logo.png')" height="39px" width="118px"/>
+            <v-img :src="require('../../src/assets/img/logo.png')" height="39px" width="120px"/>
           </div>
-          <div class="LoginIcon">
+          <router-link to="/login" class="LoginIcon">
             <v-icon color="#707070">fas fa-user-circle</v-icon>
             <span>Login</span>
-          </div>
+          </router-link>
         </v-layout>
       </v-container>
     </v-toolbar>
 
   <v-container fluid>
-    <h1>Busque pelas matérias que possui dificuldade e colabore compartilhando conhecimentos</h1>
-    <input type='text' placeholder='O que você quer aprender?'>
-    <input type='text' placeholder='Selecione uma cidade'>
+    <v-layout justify-center column>
+      <h1>Busque pelas matérias que possui dificuldade e colabore compartilhando conhecimentos</h1>
+      <input type='text' placeholder='O que você quer aprender?'>
+      <input type='text' placeholder='Selecione uma cidade'>
+    </v-layout>
     <Carousel></Carousel>
   </v-container>
   </section>
@@ -43,15 +45,5 @@ export default {
 }
 h1 {
   margin-bottom: 12px;
-}
-input {
-  width: 284px;
-  height: 45px;
-  padding:inherit;
-  border: 1px #9A1982 solid;
-  border-radius: 10px;
-  font-size: 14px;
-  margin: 8px 0px;
-  background-color: #F9F9F9;
 }
 </style>

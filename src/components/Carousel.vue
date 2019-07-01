@@ -1,30 +1,56 @@
 <template>
   <section>
     <h3>Categorias</h3>
-    <v-carousel height="100px" hide-delimiters>
-      <v-carousel-item>
-        <Category name="Artes" icon="fas fa-palette"/>
-      </v-carousel-item>
-      <v-carousel-item>
-        <Category name="Biologia" icon="fas fa-microscope"/>
-      </v-carousel-item>
-      <v-carousel-item>
-        <Category name="Filosofia" icon="fas fa-puzzle-piece"/>
-      </v-carousel-item>   
-    </v-carousel> 
+    <slick ref="slick" :options="slickOptions">
+      <Category name="Artes" icon="fas fa-palette"/>
+      <Category name="Biologia" icon="fas fa-microscope"/>
+      <Category name="Filosofia" icon="fas fa-puzzle-piece"/>
+      <Category name="Física" icon="fas fa-atom"/>
+      <Category name="Geografia" icon="fas fa-globe-africa"/>
+      <Category name="História" icon="fas fa-archway"/>
+    </slick>
   </section>
 </template>
 
 <script>
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slick from 'vue-slick';
+
 import Category from './Category.vue';
+
 export default {
   components: {
-    Category
+    Category, 
+    Slick
   },
   data() {
     return {
+      slickOptions: {
+        //options can be used from the plugin documentation
+        slidesToShow: 3,
+        infinite: true,
+        accessibility: true,
+        slidesToScroll: 3,
+        dots: true,
+        draggable: true
+      }
     }
-  }
+  }, 
+  methods: {
+    next() {
+      this.$refs.slick.next();
+    },
+
+    prev() {
+      this.$refs.slick.prev();
+    },
+
+    reInit() {
+      this.$refs.slick.reSlick();
+    }
+
+},
 }
 </script>
 
