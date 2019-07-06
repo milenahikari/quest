@@ -1,19 +1,26 @@
 <template>
   <v-container grid-list-xl>
-    <router-link to="/">
+    <router-link to="/login">
       <v-icon >fas fa-chevron-left</v-icon>
     </router-link>
 
-    <v-layout justify-center wrap my-5>
-      <v-flex d-flex shrink>
-        <v-img :src="require('../../../src/assets/img/logo.png')" height="69px" width="209px"/>
-      </v-flex>
-    </v-layout>
-
     <v-form v-model="valid">
-      <v-container>
+      <v-container fluid>
         <v-layout justify-center wrap>
-          <v-flex xs12 sm6>
+          <v-flex d-flex shrink>
+            <v-avatar
+              size="110px"
+              color="grey lighten-4"
+            >
+              <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
+            </v-avatar>
+          </v-flex>
+        </v-layout>
+        <v-layout justify-center mb-4>
+          <h2>Cadastre-se</h2>
+        </v-layout>
+        <v-layout justify-center wrap>
+          <v-flex>
 
             <v-text-field
               label="Email"
@@ -36,8 +43,7 @@
             ></v-text-field>
 
             <v-layout align-center justify-center column wrapper-button>
-              <v-btn @click="submit" :class=" { 'btnGreen' : valid, disabled: !valid }">Login</v-btn>
-              <router-link to="/register" class="mt-3">Ainda não é membro?</router-link>
+              <v-btn @click="next" :class=" { 'btnGreen' : valid, disabled: !valid }" class="mt-5">Avançar</v-btn>
             </v-layout>
           </v-flex>         
         </v-layout>
@@ -61,17 +67,19 @@ export default {
       password: '',
       passwordRules: [
         v => !!v || 'Password is required',        
-      ],
+      ]
     }
   }, 
   methods: {
-    clear () {
+    clear() {
       this.$refs.form.reset()
+    },
+    next() {
+      this.$router.push("/profile");
     }
   },
 }
 </script>
 
 <style scoped>
-
 </style>

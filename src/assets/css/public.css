@@ -21,17 +21,39 @@ h1 {
   font-size: 22px;
   font-weight: bold;
 }
-input {
-  width: 284px;
-  height: 45px;
-  padding: 5px;
-  border: 1px #9A1982 solid;
-  border-radius: 10px;
+h2 {
+  font-size: 16px;
+  font-weight: bold;
+}
+.wrapper-icon{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #707070;
   font-size: 14px;
-  margin: 8px 0px;
+}
+
+.v-text-field--outline>.v-input__control>.v-input__slot {
+  border-radius: 20px;
+  border: 1px #9A1982 solid !important;
   background-color: #F9F9F9;
+}
+
+.v-btn {
+  width: 170px;
+  height: 40px !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  text-transform: unset !important;
+  background: white !important;
+  color: #199854 !important;
+  border: 2px #199854 solid;
 }
 .arrowIcon{
   font-size: 14px;
   color:#707070;
+}
+.wrapper-button .btnGreen {
+  background: #199854 !important;
+  color: white !important;
 }

@@ -33,7 +33,6 @@ export default {
   data() {
     return {
       slickOptions: {
-        //options can be used from the plugin documentation
         slidesToShow: 3,
         infinite: true,
         accessibility: true,
