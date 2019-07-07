@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>Categorias</h3>
+    <h3>Selecione uma categoria</h3>
     <slick ref="slick" :options="slickOptions">
       <Category name="Artes" icon="fas fa-palette"/>
       <Category name="Biologia" icon="fas fa-microscope"/>
@@ -61,7 +61,6 @@ export default {
 
 <style scoped>
 h3 {
-  margin-top: 12px;
   margin-bottom: 8px;
   font-weight: bold;
 }

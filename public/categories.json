@@ -1,0 +1,50 @@
+[
+  {
+    "nome": "Artes",
+    "icon": "fas fa-palette"
+  },
+  {
+    "nome": "Biologia",
+    "icon": "fas fa-microscope"
+  },
+  {
+    "nome": "Filosofia",
+    "icon": "fas fa-puzzle-piece"
+  },
+  {
+    "nome": "Física",
+    "icon": "fas fa-atom"
+  },
+  {
+    "nome": "Geografia",
+    "icon": "fas fa-globe-africa"
+  },
+  {
+    "nome": "História",
+    "icon": "fas fa-archway"
+  },
+  {
+    "nome": "Inglês",
+    "icon": "fas fa-language"
+  },
+  {
+    "nome": "Literatura",
+    "icon": "fas fa-book-reader"
+  },
+  {
+    "nome": "Matemática",
+    "icon": "fas fa-calculator"
+  },
+  {
+    "nome": "Português",
+    "icon": "fas fa-book"
+  },
+  {
+    "nome": "Química",
+    "icon": "fas fa-bong"
+  },
+  {
+    "name": "Sociologia",
+    "icon": "fas fa-running"
+  }
+]

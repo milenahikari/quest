@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xl>
-    <router-link to="/Login">
-      <v-icon >fas fa-chevron-left</v-icon>
+    <router-link to="/Profile">
+      <v-icon>fas fa-chevron-left</v-icon>
     </router-link>
 
     <v-form v-model="valid">
@@ -59,7 +59,7 @@ export default {
       this.$refs.form.reset()
     },
     next() {
-      this.$router.push("/");
+      this.$router.push("/subject");
     }
   },
 }
