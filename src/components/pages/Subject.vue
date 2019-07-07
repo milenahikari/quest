@@ -1,6 +1,6 @@
 <template>
   <v-container grid-list-xl>
-    <router-link to="/Contact">
+    <router-link to="/user-contact">
       <v-icon >fas fa-chevron-left</v-icon>
     </router-link>
 
@@ -34,7 +34,7 @@
             ></v-textarea>
 
             <v-layout align-center justify-center column wrapper-button>
-              <v-btn @click="next" :class=" { 'btnGreen' : valid, disabled: !valid }">Cadastrar</v-btn>
+              <v-btn @click="next" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Cadastrar</v-btn>
             </v-layout>
           </v-flex>         
         </v-layout>

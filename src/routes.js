@@ -4,8 +4,8 @@ import VueRouter from 'vue-router';
 import Home from './components/pages/Home.vue';
 import Login from './components/pages/Login.vue';
 import Register from './components/pages/Login/Register.vue';
-import Profile from './components/pages/Login/Profile.vue';
-import Contact from './components/pages/Login/Contact.vue';
+import UserData from './components/pages/Login/UserData.vue';
+import UserContact from './components/pages/Login/UserContact.vue';
 import Subject from './components/pages/Subject.vue';
 import Success from './components/pages/Success.vue';
 
@@ -31,14 +31,14 @@ const routers = new VueRouter({
       component: Register
     },
     {
-      path: '/profile',
-      name: 'profile',
-      component: Profile
+      path: '/user-data',
+      name: 'user-data',
+      component: UserData
     },
     {
-      path: '/contact',
-      name: 'contact',
-      component: Contact
+      path: '/user-contact',
+      name: 'user-contact',
+      component: UserContact
     },
     {
       path: '/subject',

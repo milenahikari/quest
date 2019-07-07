@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Meu perfil",
+    "icon": "fas fa-user-edit",
+    "link": "/"
+  },
+  {
+    "name": "Minhas matérias",
+    "icon": "fas fa-chalkboard-teacher",
+    "link": ""
+  },
+  {
+    "name": "Medalhas",
+    "icon": "fas fa-medal",
+    "link": ""
+  },
+  {
+    "name": "QR Code",
+    "icon": "fas fa-qrcode",
+    "link": ""
+  },
+  {
+    "name": "Avaliar aula",
+    "icon": "fas fa-star",
+    "link": ""
+  },
+  {
+    "name": "Sair",
+    "icon": "fas fa-sign-out-alt"
+  }
+]

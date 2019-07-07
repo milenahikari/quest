@@ -1,6 +1,6 @@
 <template>
   <v-container grid-list-xl>
-    <router-link to="/Profile">
+    <router-link to="/UserData">
       <v-icon>fas fa-chevron-left</v-icon>
     </router-link>
 
@@ -32,7 +32,7 @@
             </v-layout>
 
             <v-layout align-center justify-center column wrapper-button my-5>
-              <v-btn @click="next" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
+              <v-btn @click="next" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
             </v-layout>
           </v-flex>         
         </v-layout>

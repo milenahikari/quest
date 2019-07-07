@@ -36,7 +36,7 @@
             ></v-text-field>
 
             <v-layout align-center justify-center column wrapper-button>
-              <v-btn @click="submit" :class=" { 'btnGreen' : valid, disabled: !valid }">Login</v-btn>
+              <v-btn @click="submit" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Login</v-btn>
               <router-link to="/register" class="mt-3">Ainda não é membro?</router-link>
             </v-layout>
           </v-flex>         

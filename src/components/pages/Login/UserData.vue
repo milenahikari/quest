@@ -50,7 +50,7 @@
             ></v-checkbox>
 
             <v-layout align-center justify-center column wrapper-button>
-              <v-btn @click="next" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
+              <v-btn @click="next" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
             </v-layout>
           </v-flex>         
         </v-layout>
@@ -76,7 +76,7 @@ export default {
       this.$refs.form.reset()
     },
     next() {
-      this.$router.push("/contact");
+      this.$router.push("/user-contact");
     }
   },
 }
