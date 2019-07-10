@@ -8,6 +8,8 @@ import UserData from './components/pages/Login/UserData.vue';
 import UserContact from './components/pages/Login/UserContact.vue';
 import Subject from './components/pages/Subject.vue';
 import Success from './components/pages/Success.vue';
+import Profile from './components/pages/Profile.vue';
+import MyCourses from './components/pages/MyCourses.vue';
 
 Vue.use(VueRouter);
 
@@ -49,6 +51,16 @@ const routers = new VueRouter({
       path: '/success',
       name: 'success',
       component: Success
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile
+    },
+    {
+      path: '/my-courses',
+      name: 'my-courses',
+      component: MyCourses
     }
   ]
 });

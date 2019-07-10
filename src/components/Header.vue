@@ -1,26 +1,23 @@
 <template>
   <section class="white">
     <v-toolbar flat color="white">
-      <v-container fluid class="pa-0">
-        <v-layout justify-space-between>
-          <div>
-            <v-img :src="require('../../src/assets/img/quest.png')" class="logo"/>
-          </div>
-          <v-toolbar-side-icon v-if="isLogged" class="#707070--text" v-on:click="hide"></v-toolbar-side-icon>
-          <router-link to="/login" v-else class="wrapper-icon">
-            <v-icon>fas fa-user-circle</v-icon>
-            <span>Login</span>
-          </router-link>
-        </v-layout>
-      </v-container>
+      <v-toolbar-side-icon v-if="isLogged" class="menuIcon" v-on:click="hide"></v-toolbar-side-icon>
+      <router-link to="/login" v-else class="wrapper-icon">
+        <v-icon>fas fa-user-circle</v-icon>
+        <span>Login</span>
+      </router-link>
+      <v-spacer></v-spacer>
+      <div>
+        <v-img :src="require('../../src/assets/img/quest.png')" class="logo"/>
+     </div>
     </v-toolbar>
 
-    <v-navigation-drawer v-model="drawer" absolute temporary right>
+    <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list 
         v-for="(item, index) in items"
         :key="item.title" 
       >
-        <v-list-tile>
+        <v-list-tile @click="toRouter(item.to)">
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -30,7 +27,7 @@
           </v-list-tile-content>
           
         </v-list-tile>
-        <v-divider></v-divider>
+        <v-divider v-if="index + 1 < items.length" :key="`divider-${index}`"></v-divider>
       </v-list>
       
     </v-navigation-drawer>
@@ -73,6 +70,9 @@ export default {
     hide() {
       this.drawer = !this.drawer;
     }, 
+    toRouter(url) {
+      this.$router.push(`${url}`);
+    }
   },
   mounted() {
     axios.get('/menu.json')
@@ -89,8 +89,12 @@ h1 {
   height: 40px;
   width: 122px;
   margin-top: 6px;
+  margin-right: 6px;
 }
 .wrapper-icon {
   width: 65px;
+}
+.menuIcon {
+  color: #707070 !important;
 }
 </style>

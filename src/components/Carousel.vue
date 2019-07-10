@@ -38,7 +38,9 @@ export default {
         accessibility: true,
         slidesToScroll: 3,
         dots: true,
-        draggable: true
+        prevArrow: false,
+        nextArrow: false,
+        draggable: true,
       }
     }
   }, 

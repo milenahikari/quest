@@ -12,7 +12,7 @@
               size="100px"
               color="grey lighten-4"
             >
-              <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
+              <v-icon>fas fa-user-plus</v-icon>
             </v-avatar>
           </v-flex>
         </v-layout>
@@ -21,6 +21,22 @@
         </v-layout>
         <v-layout justify-center wrap>
           <v-flex>
+
+            <v-text-field
+              label="Nome"
+              type="text"
+              :rules="fiedsRequired"
+              required
+              outline
+            ></v-text-field>
+
+            <v-text-field
+              label="Sobrenome"
+              type="text"
+              :rules="fiedsRequired"
+              required
+              outline
+            ></v-text-field>
 
             <v-text-field
               label="Email"
@@ -42,6 +58,40 @@
               outline
             ></v-text-field>
 
+            <v-text-field
+              label="Cidade"
+              type="text"
+              :rules="fiedsRequired"
+              required
+              outline
+            ></v-text-field>
+
+            <v-text-field
+              label="Curso"
+              type="text"
+              :rules="fiedsRequired"
+              required
+              outline
+            ></v-text-field>
+
+            <v-checkbox
+              v-model="checkbox"
+              label="Desejo contribuir ensinando"
+            ></v-checkbox>
+
+            <v-text-field
+              label="Celular"
+              v-model="email"
+              :rules="fiedsRequired"
+              required
+              outline
+            ></v-text-field>
+
+            <v-checkbox
+              v-model="checkbox"
+              label="Compartilhar número de WhatsApp"
+            ></v-checkbox>
+
             <v-layout align-center justify-center column wrapper-button>
               <v-btn @click="next" class="q-button mt-5" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
             </v-layout>
@@ -49,7 +99,6 @@
         </v-layout>
       </v-container>
     </v-form>
-
   </v-container>
 </template>
 
@@ -60,6 +109,10 @@ export default {
       valid: false,
       e1: false,
       email: '',
+      fiedsRequired: [ 
+        v => !!v || "E-mail is required",
+      ],
+      checkbox: true,
       emailRules: [ 
         v => !!v || "E-mail is required",
         v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
@@ -75,7 +128,7 @@ export default {
       this.$refs.form.reset()
     },
     next() {
-      this.$router.push("/user-data");
+      this.$router.push("/");
     }
   },
 }
