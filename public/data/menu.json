@@ -7,12 +7,12 @@
   {
     "name": "Minhas matérias",
     "icon": "fas fa-chalkboard-teacher",
-    "to": ""
+    "to": "/my-courses"
   },
   {
     "name": "Medalhas",
     "icon": "fas fa-medal",
-    "to": ""
+    "to": "/medals"
   },
   {
     "name": "QR Code",

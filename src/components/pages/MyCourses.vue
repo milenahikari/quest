@@ -1,9 +1,8 @@
 <template>
-  <v-container>
-    <router-link to="/login">
+  <v-container fluid>
+    <router-link to="/">
       <v-icon >fas fa-chevron-left</v-icon>
     </router-link>
-
 
     <v-layout column>
       <v-layout>
@@ -20,11 +19,13 @@
       >
         <v-icon>fas fa-user-plus</v-icon>
       </v-avatar>
-      </v-layout>
-      <v-divider></v-divider>
-      <v-flex mt-1>
-        <Courses></Courses>
-      </v-flex>
+    </v-layout>
+
+    <v-divider></v-divider>
+
+    <v-flex mt-1>
+      <Courses></Courses>
+    </v-flex>
     </v-layout>
   </v-container>
 </template>

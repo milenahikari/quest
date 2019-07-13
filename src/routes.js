@@ -10,6 +10,9 @@ import Subject from './components/pages/Subject.vue';
 import Success from './components/pages/Success.vue';
 import Profile from './components/pages/Profile.vue';
 import MyCourses from './components/pages/MyCourses.vue';
+import About from './components/pages/About.vue';
+import Values from './components/pages/Values.vue';
+import Medals from './components/pages/Medals.vue';
 
 Vue.use(VueRouter);
 
@@ -61,6 +64,21 @@ const routers = new VueRouter({
       path: '/my-courses',
       name: 'my-courses',
       component: MyCourses
+    },
+    {
+      path: '/quem-somos',
+      name: 'quem-somos',
+      component: About
+    },
+    {
+      path: '/nossos-valores',
+      name: 'nossos-valores',
+      component: Values
+    },
+    {
+      path: '/medals',
+      name: 'medals',
+      component: Medals
     }
   ]
 });

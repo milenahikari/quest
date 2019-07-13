@@ -1,6 +1,6 @@
 <template>
-  <v-container grid-list-xl>
-    <router-link to="/login">
+  <v-container fluid>
+    <router-link to="/">
       <v-icon >fas fa-chevron-left</v-icon>
     </router-link>
 

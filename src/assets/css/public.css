@@ -22,6 +22,10 @@ h2 {
   font-size: 16px;
   font-weight: bold;
 }
+.homeBackground {
+  background: #F9F9F9;
+}
+
 .wrapper-icon{
   display: flex;
   justify-content: space-around;
@@ -31,7 +35,7 @@ h2 {
 }
 
 .v-text-field--outline>.v-input__control>.v-input__slot {
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px #9A1982 solid !important;
   background-color: #F9F9F9;
 }

@@ -1,0 +1,41 @@
+[
+  {
+    "category": {
+      "id": "1",
+      "name": "Biologia",
+      "icon": "fas fa-microscope",
+      "courses": [
+        {
+          "id": "1",
+          "name": "Anatomia",
+          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy and typesetting industry. Lorem Ipsum has been has been the industry's standard dummy and. "  
+        },
+        {
+          "id": "2",
+          "name": "Princípios básicos da Genética",
+          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy and typesetting industry. Lorem Ipsum has been has been the industry's standard dummy and. "
+        }
+      ]
+    }
+    
+  },
+  {
+    "category": {
+      "id": "2",
+      "name": "Matemática",
+      "icon": "fas fa-calculator",
+      "courses": [
+        {
+          "id": "1",
+          "name": "Trigonometria para ensino médio",
+          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy and typesetting industry. Lorem Ipsum has been has been the industry's standard dummy and. "
+        },
+        {
+          "id": "2",
+          "name": "Tabuada do 2",
+          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy and typesetting industry. Lorem Ipsum has been has been the industry's standard dummy and. "
+        }
+      ]
+    }
+  }
+]   

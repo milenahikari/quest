@@ -55,7 +55,4 @@ export default {
 </script>
 
 <style>
-.homeBackground {
-  background: #F9F9F9;
-}
 </style>
