@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       drawer: false,
-      isLogged: false,
+      isLogged: true,
       items: [],
     }
   },
