@@ -1,0 +1,32 @@
+[
+  {
+    "icon": "fas fa-gem",
+    "title": "O Iniciante",
+    "class": "iniciante"
+  },
+  {
+    "icon": "fas fa-gem",
+    "title": "O Esforçado (+5 ajudas)",
+    "class": "esforcado"
+  },
+  {
+    "icon": "fas fa-gem",
+    "title": "O Concentrado (+10 ajudas)",
+    "class": "concentrado"
+  },
+  {
+    "icon": "fas fa-gem",
+    "title": "O Motivador (+15 ajudas)",
+    "class": "motivador"
+  },
+  {
+    "icon": "fas fa-gem",
+    "title": "A Inspiração (+20 ajudas)",
+    "class": "inspiracao"
+  },
+  {
+    "icon": "fas fa-gem",
+    "title": "O Supremo (acima de 30 ajudas)",
+    "class": "supremo"
+  }
+]
