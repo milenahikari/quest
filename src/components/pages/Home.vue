@@ -3,36 +3,22 @@
     <Header></Header>
 
     <v-container grid-list-xl>
+      <v-layout>
+        <v-flex>
+          <Monitor></Monitor>
+        </v-flex>
+      </v-layout>
+    
       <v-layout justify-center wrap>
-        <v-flex d-flex shrink>
-          <Card 
-            img      = "grupoestudo.png"
-            position = "0px -15px"
-            title    = "APRENDA" 
-            parteI   = "Encontre a ajuda perfeita para entender a matéria"
-            parteII  = "Tire suas dúvidas com um amigo"
-            parteIII = "Combine o melhor momento para estudar"
-            parteIV  = ""/>
-        </v-flex>
-        <v-flex d-flex shrink>
-            <Card 
-            img      = "ensinar.png"
-            position = "0px -55px" 
-            title    = "ENSINE" 
-            parteI   = "Compartilhe seu conhecimento"
-            parteII  = "Faça novas amizades"
-            parteIII = "Divirta-se ensinando e aprendendo"
-            parteIV  = ""/>
-        </v-flex>
-        <v-flex d-flex shrink>    
-            <Card 
-            img      = "premio.jpg"
-            position = "0px -20px"
-            title    = "CONQUISTE" 
-            parteI   = "Colabore ensinando e ganhe estrelas"
-            parteII  = "Cumpra metas e colecione pedras preciosas"
-            parteIII = "Seja um membro"
-            parteIV  = "É grátis :)"/>
+        <v-flex d-flex shrink v-for="explanation in explanations">
+          <Explanation 
+            :img      = "`${explanation.image}`"
+            :position = "`${explanation.position}`"
+            :title    = "`${explanation.title}`"
+            :parteI   = "`${explanation.parteI}`"
+            :parteII  = "`${explanation.parteII}`"
+            :parteIII = "`${explanation.parteIII}`"
+            :parteIV  = "`${explanation.parteIV}`"/>
         </v-flex>
       </v-layout>
     </v-container>
@@ -41,16 +27,29 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 import Header from '../Header.vue';
-import Card from '../Card.vue';
+import Explanation from '../Explanation.vue';
 import Footer from '../Footer.vue';
+import Monitor from '../Monitor.vue';
 
 export default {
+  data() {
+    return {
+      explanations: [],
+    }
+  },
   components: {
     Header, 
-    Card, 
-    Footer
-  }
+    Explanation, 
+    Footer, 
+    Monitor,
+  },
+  mounted() {
+    axios.get('/data/explanation.json')
+      .then(res => this.explanations = res.data)
+  },
 }
 </script>
 

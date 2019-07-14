@@ -1,0 +1,29 @@
+[
+  {
+    "title": "APRENDA",
+    "image": "grupoestudo.png",
+    "position": "0px -15px",
+    "parteI": "Encontre a ajuda perfeita para entender a matéria",
+    "parteII": "Tire suas dúvidas com um amigo",
+    "parteIII": "Combine o melhor momento para estudar",
+    "parteIV": ""
+  },
+  {
+    "title": "ENSINE",
+    "image": "ensinar.png",
+    "position": "0px -55px",
+    "parteI": "Compartilhe seu conhecimento",
+    "parteII": "Faça novas amizades",
+    "parteIII": "Divirta-se ensinando e aprendendo",
+    "parteIV": ""
+  },
+  {
+    "title": "CONQUISTE",
+    "image": "premio.jpg",
+    "position": "0px -20px",
+    "parteI": "Colabore ensinando e ganhe estrelas",
+    "parteII": "Cumpra metas e colecione pedras preciosas",
+    "parteIII": "Seja um membro",
+    "parteIV": "É grátis :)"
+  }
+]

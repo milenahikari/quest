@@ -22,6 +22,7 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slick from 'vue-slick';
+import axios from 'axios';
 
 import Category from './Category.vue';
 
@@ -32,6 +33,7 @@ export default {
   },
   data() {
     return {
+      categories: [],
       slickOptions: {
         slidesToShow: 3,
         infinite: true,
@@ -41,7 +43,7 @@ export default {
         prevArrow: false,
         nextArrow: false,
         draggable: true,
-      }
+      },
     }
   }, 
   methods: {
@@ -56,8 +58,11 @@ export default {
     reInit() {
       this.$refs.slick.reSlick();
     }
-
-},
+  },
+  mounted() {
+    axios.get('/data/categories.json')
+      .then(res => this.categories = res.data)
+  },
 }
 </script>
 

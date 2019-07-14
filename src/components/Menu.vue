@@ -20,9 +20,10 @@
 
       <v-list>
         <v-list-tile 
-          v-for="(item, index) in items"
+          v-for="(item) in items"
           :key="item.title"
           @click="toRouter(item.to)"
+          class="py-2"
         >
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>

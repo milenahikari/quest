@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Maria Júlia",
+    "course": "Medicina",
+    "city": "Promissão",
+    "state": "SP"
+  },
+  {
+    "name": "Renan Melo",
+    "course": "Ciência da Computação",
+    "city": "Penapólis",
+    "state": "SP"
+  },
+  {
+    "name": "Bruno Santos",
+    "course": "Ciências Biológias",
+    "city": "Ribeirão Preto",
+    "state": "SP"
+  },
+  {
+    "name": "Eduarda Gomes",
+    "course": "Biomedicina",
+    "city": "Taubaté",
+    "state": "SP"
+  },
+  {
+    "name": "Gabrieli Cristina",
+    "course": "Odontologia",
+    "city": "Araçatuba",
+    "state": "SP"
+  },
+  {
+    "name": "Joaquim Carmo",
+    "course": "Fisioterapia",
+    "city": "Birigui",
+    "state": "SP"
+  }
+]
