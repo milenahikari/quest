@@ -8,7 +8,7 @@
         <v-avatar
           size="100px"
           color="grey lighten-4"
-          class="ma-1"
+          class="ma-2"
         >
           <v-icon>fas fa-user-plus</v-icon>
         </v-avatar>
