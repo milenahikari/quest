@@ -2,7 +2,7 @@
   <section class="homeBackground">
     <Header></Header>
 
-    <v-container grid-list-xl>
+    <v-container>
       <v-layout>
         <v-flex>
           <h2>Resultados encontrados...</h2>

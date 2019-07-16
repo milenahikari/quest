@@ -8,34 +8,34 @@
         <v-avatar
           size="100px"
           color="grey lighten-4"
-          class="ma-2"
+          class="ma-1"
         >
           <v-icon>fas fa-user-plus</v-icon>
         </v-avatar>
         <v-layout>
-          <v-flex>
-          <div 
-            class="box-stars"
-          >
-            <div
-              v-for="padrao in 5"
-              :key="padrao"
+          <v-flex ml-3>
+            <div 
+              class="box-stars"
             >
-              <v-icon 
-                class="star completed"
-                v-if="padrao <= number"
-              >fas fa-star</v-icon>
-              <v-icon 
-                class="star"
-                v-else
-              >fas fa-star</v-icon>
+              <div
+                v-for="padrao in 5"
+                :key="padrao"
+              >
+                <v-icon 
+                  class="star completed"
+                  v-if="padrao <= number"
+                >fas fa-star</v-icon>
+                <v-icon 
+                  class="star"
+                  v-else
+                >fas fa-star</v-icon>
 
+              </div>
             </div>
-          </div>
-          <h2>{{name}}</h2>
-          <p>{{course}}</p>
-          <p>{{city}} - {{state}}</p>
-        </v-flex>
+            <h2>{{name}}</h2>
+            <p>{{course}}</p>
+            <p>{{city}} - {{state}}</p>
+          </v-flex>
         </v-layout>
       </v-layout>
     </v-container>
