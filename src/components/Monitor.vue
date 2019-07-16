@@ -13,7 +13,7 @@
           <v-icon>fas fa-user-plus</v-icon>
         </v-avatar>
         <v-layout>
-          <v-flex ml-3>
+          <v-flex ml-3 pt-0>
             <div 
               class="box-stars"
             >
