@@ -1,38 +1,50 @@
 [
   {
+    "id": "1",
     "name": "Maria Júlia",
     "course": "Medicina",
     "city": "Promissão",
-    "state": "SP"
+    "state": "SP",
+    "rating": 3
   },
   {
+    "id": "2",
     "name": "Renan Melo",
     "course": "Ciência da Computação",
     "city": "Penapólis",
-    "state": "SP"
+    "state": "SP",
+    "rating": 4
   },
   {
+    "id": "3",
     "name": "Bruno Santos",
     "course": "Ciências Biológias",
     "city": "Ribeirão Preto",
-    "state": "SP"
+    "state": "SP",
+    "rating": 5
   },
   {
+    "id": "4",
     "name": "Eduarda Gomes",
     "course": "Biomedicina",
     "city": "Taubaté",
-    "state": "SP"
+    "state": "SP",
+    "rating": 3
   },
   {
+    "id": "5",
     "name": "Gabrieli Cristina",
     "course": "Odontologia",
     "city": "Araçatuba",
-    "state": "SP"
+    "state": "SP",
+    "rating": 2
   },
   {
+    "id": "6",
     "name": "Joaquim Carmo",
     "course": "Fisioterapia",
     "city": "Birigui",
-    "state": "SP"
+    "state": "SP",
+    "rating": 0
   }
 ]

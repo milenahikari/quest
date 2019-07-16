@@ -5,12 +5,29 @@
     <v-container grid-list-xl>
       <v-layout>
         <v-flex>
-          <Monitor></Monitor>
+          <h2>Resultados encontrados...</h2>
+
+          <div 
+            v-for="monitor in monitors"
+            :key="monitor.id"
+          >
+            <Monitor 
+              :name="`${monitor.name}`" 
+              :course="`${monitor.course}`"
+              :city="`${monitor.city}`"
+              :state="`${monitor.state}`"
+              :rating="`${monitor.rating}`"
+            ></Monitor>
+          </div>
         </v-flex>
       </v-layout>
     
       <v-layout justify-center wrap>
-        <v-flex d-flex shrink v-for="explanation in explanations">
+        <v-flex 
+          d-flex shrink 
+          v-for="explanation in explanations"
+          :key="explanation.title"
+        >
           <Explanation 
             :img      = "`${explanation.image}`"
             :position = "`${explanation.position}`"
@@ -38,6 +55,7 @@ export default {
   data() {
     return {
       explanations: [],
+      monitors: [],
     }
   },
   components: {
@@ -49,7 +67,11 @@ export default {
   mounted() {
     axios.get('/data/explanation.json')
       .then(res => this.explanations = res.data)
+
+    axios.get('data/monitors.json')
+      .then(res => this.monitors = res.data)
   },
+  
 }
 </script>
 
