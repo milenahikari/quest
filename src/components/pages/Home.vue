@@ -11,13 +11,13 @@
             v-for="monitor in monitors"
             :key="monitor.id"
           >
-            <Monitor 
+            <CardMonitor 
               :name="`${monitor.name}`" 
               :course="`${monitor.course}`"
               :city="`${monitor.city}`"
               :state="`${monitor.state}`"
               :rating="`${monitor.rating}`"
-            ></Monitor>
+            ></CardMonitor>
           </div>
         </v-flex>
       </v-layout>
@@ -49,7 +49,7 @@ import axios from 'axios';
 import Header from '../Header.vue';
 import Explanation from '../Explanation.vue';
 import Footer from '../Footer.vue';
-import Monitor from '../Monitor.vue';
+import CardMonitor from '../CardMonitor.vue';
 
 export default {
   data() {
@@ -62,7 +62,7 @@ export default {
     Header, 
     Explanation, 
     Footer, 
-    Monitor,
+    CardMonitor,
   },
   mounted() {
     axios.get('/data/explanation.json')

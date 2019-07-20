@@ -2,12 +2,15 @@
 
   <v-layout column>
     <v-flex align-self-end>
-      <v-btn class="btn-course">Nova matéria</v-btn>
+      <v-btn 
+        class="btn-course"
+        @click="btnRouter(router)"
+      >{{txtButton}}</v-btn>
     </v-flex>
     
     <v-flex>
       <v-layout column
-        v-for="(group, index) in groups"
+        v-for="(group) in groups"
         :key="group.id"
       >
 
@@ -18,16 +21,17 @@
       
         <v-layout column
           v-for="(item) in group.category.courses"
+          :key="item"
         >
           <v-layout align-center justify-space-between row>
-            <span class="title-course">{{item.name}}</span>
-            <div>
+            <span class="title-course mt-3">{{item.name}}</span>
+            <div v-if="showButton == 'yes'">
               <button class="btn-icon" @click="deleteCourse"><v-icon class="icon-course">fas fa-trash</v-icon></button>
               <button class="btn-icon" @click="modifyCourse"><v-icon class="icon-course">fas fa-pencil-alt</v-icon></button>
             </div>
           </v-layout>
           <v-layout>
-            <div class="wrapper-description mt-1 mb-4">
+            <div class="wrapper-description mt-1 mb-3">
               <p>{{item.description}}</p>
             </div>
           </v-layout>
@@ -67,16 +71,14 @@
         </v-card>
       </v-dialog>
     </v-layout> 
-    <Delete></Delete>
   </v-layout>
 </template>
 
 <script>
 import axios from 'axios';
 
-import Delete from './Delete.vue';
-
 export default {
+  props: ['txtButton', 'showButton', 'router'],
   data() {
     return {
       groups: [],
@@ -94,6 +96,9 @@ export default {
     },
     modifyCourse() {
       alert("Deseja alterar essa matéria?");
+    },
+    btnRouter(router) {
+      this.$router.push(router);
     }
   },
 }

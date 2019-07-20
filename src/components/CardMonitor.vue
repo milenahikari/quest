@@ -2,6 +2,7 @@
   <v-card 
     class="card-monitor mt-3"
     flat
+    to="/monitor"
   >
     <v-container>
       <v-layout align-center>
@@ -74,7 +75,7 @@ export default {
   color: #FFB500;
   font-size: 22px;
   font-weight: inherit;
-  padding-right: 5px;
+  padding-right: 10px;
 }
 .completed {
   font-weight: bold;

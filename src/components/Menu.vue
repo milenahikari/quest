@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import api from '../services/api';
 
 export default {
   data() {
@@ -60,7 +60,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('/data/menu.json')
+    api.get('/menus')
       .then(res => this.items = res.data)
   },
 }

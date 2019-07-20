@@ -65,7 +65,7 @@ export default {
       this.$refs.form.reset()
     },
     next() {
-      this.$router.push("/success");
+      this.$router.push("/alert");
     }
   },
 }

@@ -7,12 +7,14 @@ import Register from './components/pages/Login/Register.vue';
 import UserData from './components/pages/Login/UserData.vue';
 import UserContact from './components/pages/Login/UserContact.vue';
 import Subject from './components/pages/Subject.vue';
-import Success from './components/pages/Success.vue';
 import Profile from './components/pages/Profile.vue';
 import MyCourses from './components/pages/MyCourses.vue';
 import About from './components/pages/About.vue';
 import Values from './components/pages/Values.vue';
 import Medals from './components/pages/Medals.vue';
+import Monitor from './components/pages/Monitor.vue';
+import MonitorContact from './components/pages/MonitorContact.vue';
+import Alert from './components/pages/Alert.vue';
 
 Vue.use(VueRouter);
 
@@ -51,11 +53,6 @@ const routers = new VueRouter({
       component: Subject
     },
     {
-      path: '/success',
-      name: 'success',
-      component: Success
-    },
-    {
       path: '/profile',
       name: 'profile',
       component: Profile
@@ -79,6 +76,21 @@ const routers = new VueRouter({
       path: '/medals',
       name: 'medals',
       component: Medals
+    },
+    {
+      path: '/monitor',
+      name: 'monitor',
+      component: Monitor
+    },
+    {
+      path: '/monitor-contact',
+      name: 'monitor-contact',
+      component: MonitorContact
+    },
+    {
+      path: '/alert',
+      name: 'alert',
+      component: Alert
     }
   ]
 });

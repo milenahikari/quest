@@ -24,7 +24,7 @@
     <v-divider></v-divider>
 
     <v-flex mt-1>
-      <Courses></Courses>
+      <Courses txtButton="Nova matéria" showButton="yes" router="/"></Courses>
     </v-flex>
     </v-layout>
   </v-container>
