@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import api from '../../services/api';
 
 import Header from '../Header.vue';
 import Explanation from '../Explanation.vue';
@@ -65,10 +65,10 @@ export default {
     CardMonitor,
   },
   mounted() {
-    axios.get('/data/explanation.json')
+    api.get('/explanations')
       .then(res => this.explanations = res.data)
 
-    axios.get('data/monitors.json')
+    api.get('/students')
       .then(res => this.monitors = res.data)
   },
   

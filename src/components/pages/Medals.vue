@@ -10,10 +10,10 @@
       <div class="frame mt-4">
         <div 
           v-for="(color, index) in colors"
-          :key="color.nivel"
+          :key="color.level"
         >
           <div v-if="index < userMedals.number">
-            <Medal :color="`${color.nivel}`"></Medal>
+            <Medal :color="`${color.level}`"></Medal>
           </div>
           <div v-else>
             <Medal color="template"></Medal>
@@ -42,6 +42,7 @@
 
 <script>
 import axios from 'axios';
+import api from '../../services/api';
 
 import Medal from '../Medal';
 
@@ -60,10 +61,10 @@ export default {
     axios.get('/data/userMedals.json')
       .then(res => this.userMedals = res.data)
 
-    axios.get('/data/gems.json')
+    api.get('/gems')
       .then(res => this.gems = res.data)
     
-    axios.get('/data/colors.json')
+    api.get('/levels')
       .then(res => this.colors = res.data)
 
   },

@@ -4,7 +4,11 @@
       <v-icon >fas fa-chevron-left</v-icon>
     </router-link>
 
-    <v-form v-model="valid">
+    <v-form 
+      v-model="valid"
+      method="post" 
+      action="https://www.getform.org/f/[YOUR-FORM-ID]"
+    >
       <v-container fluid>
         <v-layout justify-center wrap>
           <v-flex d-flex shrink>
@@ -23,8 +27,17 @@
           <v-flex>
 
             <v-text-field
+              label="Nome"
+              v-model="user.name"
+              type="text"
+              :rules="fiedsRequired"
+              required
+              outline
+            ></v-text-field>
+            
+            <v-text-field
               label="Email"
-              v-model="email"
+              v-model="user.email"
               :rules="emailRules"
               required
               outline
@@ -32,7 +45,7 @@
 
             <v-text-field
               label="Senha"
-              v-model="password"
+              v-model="user.password"
               min="8"
               :append-icon="e1 ? 'fas fa-eye' : 'fas fa-eye-slash'"
               :append-icon-cb="() => (e1 = !e1)"
@@ -43,7 +56,7 @@
             ></v-text-field>
 
             <v-layout align-center justify-center column wrapper-button>
-              <v-btn @click="next" class="q-button mt-5" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
+              <v-btn @click="submit" class="q-button mt-5" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
             </v-layout>
           </v-flex>         
         </v-layout>
@@ -54,28 +67,55 @@
 </template>
 
 <script>
+import api from '../../../services/api';
+
 export default {
   data() {
     return {
+      user: {
+        name: '',
+        email: '',
+        password: '',
+      },
+
       valid: false,
       e1: false,
-      email: '',
+      
       emailRules: [ 
-        v => !!v || "E-mail is required",
-        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+        v => !!v || "E-mail é obrigatório",
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail inválido'
       ],
-      password: '',
+      
       passwordRules: [
-        v => !!v || 'Password is required',        
-      ]
+        v => !!v || 'Senha é obrigatório',        
+      ],
+      fiedsRequired: [ 
+        v => !!v || "Nome é obrigatório",
+      ],
     }
   }, 
   methods: {
     clear() {
       this.$refs.form.reset()
     },
-    next() {
-      this.$router.push("/user-data");
+    async submit() {
+      const user = {
+        ...this.user,
+        c_password: this.user.password
+      }
+      
+      try{
+        const response = await api.post('/register', user);
+
+        await localStorage.setItem('user', JSON.stringify(response.data.success));
+
+        this.$router.push("/user-data");
+        
+      } catch(e) {
+        alert("Erro: arruma ai");
+      }
+
+
     }
   },
 }
