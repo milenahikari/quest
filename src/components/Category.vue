@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .category{
   width: 100px;
   height: 100px;

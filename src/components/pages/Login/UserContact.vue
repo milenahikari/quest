@@ -1,6 +1,6 @@
 <template>
   <v-container grid-list-xl>
-    <router-link to="/UserData">
+    <router-link to="/user-data">
       <v-icon>fas fa-chevron-left</v-icon>
     </router-link>
 

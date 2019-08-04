@@ -38,6 +38,7 @@
             <v-text-field
               label="Email"
               v-model="user.email"
+              type="email"
               :rules="emailRules"
               required
               outline
@@ -47,6 +48,7 @@
               label="Senha"
               v-model="user.password"
               min="8"
+              @keyup.enter="submit"
               :append-icon="e1 ? 'fas fa-eye' : 'fas fa-eye-slash'"
               :append-icon-cb="() => (e1 = !e1)"
               :type="e1 ? 'text' : 'password'"

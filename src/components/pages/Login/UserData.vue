@@ -13,30 +13,18 @@
         <v-layout justify-center wrap>
           <v-flex>
 
-
             <v-autocomplete
               v-model="city"
               :items="searchCities"
               :search-input.sync="search"
-              color="white"
-              hide-no-data
-              hide-selected
-              item-text="Description"
-              item-value="API"
-              label="Public APIs"
-              placeholder="Start typing to Search"
-              return-object
-            ></v-autocomplete>
-
-            <v-text-field
-              label="Cidade"
-              v-model="profile.city"
-              name="city"
-              type="number"
               :rules="fiedsRequired"
+              hide-no-data
+              label="Cidade"
+              name="city"
               required
               outline
-            ></v-text-field>
+              return-object
+            ></v-autocomplete>
 
             <v-text-field
               label="Curso"
@@ -70,7 +58,7 @@ export default {
   data() {
     return {
       profile: {
-        city: '',
+        id_city: '',
         course: '',
         teach: false,
       },
@@ -90,25 +78,37 @@ export default {
       this.$refs.form.reset()
     },
     async submit() {
-      const id = JSON.parse(localStorage.getItem('user')).id;
+      const id_user = JSON.parse(localStorage.getItem('user')).id;
 
       const profile = {
-        id,
-        city: this.profile.city,
+        id_user,
+        id_city: this.profile.id_city,
         course: this.profile.course,
         teach: this.profile.teach,
       }
       try {
         const response = await api.put('users/update', profile);
 
-        this.$router.push("user-contact")
+        (this.profile.teach == false) ? this.$router.push("/") : this.$router.push("user-contact");
+        
       }catch(e) {
         alert("Erro");
         console.log(e);
       }      
     }
   },
-  
+
+  computed: {
+    searchCities(){
+      return this.result_cities.map(entry => {
+        this.profile.id_city = entry.id_city;
+
+        return `${entry.name} / ${entry.federated_unit}`
+
+      })
+    }
+  },
+
   watch: {
     async search (val) {
 
@@ -117,16 +117,6 @@ export default {
       this.result_cities = response.data;
 
     },
-  },
-
-  computed: {
-    searchCities(){
-      return this.result_cities.map(entry => {
-
-        return `${entry.nome} / ${entry.sigla}`
-
-      })
-    }
   },
 }
 </script>
