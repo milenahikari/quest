@@ -15,6 +15,7 @@ import Medals from './components/pages/Medals.vue';
 import Monitor from './components/pages/Monitor.vue';
 import MonitorContact from './components/pages/MonitorContact.vue';
 import Alert from './components/pages/Alert.vue';
+import Teste from './components/pages/Teste.vue';
 
 Vue.use(VueRouter);
 
@@ -91,6 +92,11 @@ const routers = new VueRouter({
       path: '/alert',
       name: 'alert',
       component: Alert
+    },
+    {
+      path: '/teste', 
+      name: 'teste',
+      component: Teste
     }
   ]
 });

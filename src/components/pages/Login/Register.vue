@@ -104,15 +104,18 @@ export default {
         c_password: this.user.password
       }
       
-      try{
+      try {
         const response = await api.post('/register', user);
 
         await localStorage.setItem('user', JSON.stringify(response.data.success));
+
+        api.defaults.headers.Authorization = `Bearer ${response.data.success.token}`
 
         this.$router.push("/user-data");
         
       } catch(e) {
         alert("Erro: arruma ai");
+        console.log(e);
       }
 
 
