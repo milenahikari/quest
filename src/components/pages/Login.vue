@@ -65,8 +65,11 @@ export default {
     }
   }, 
   methods: {
-    clear () {
-      this.$refs.form.reset()
+    clear() {
+      this.$refs.form.reset();
+    },
+    submit() {
+      alert('Apertou no botao');
     }
   },
 }

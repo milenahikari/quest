@@ -7,6 +7,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 
 import App from './App.vue';
 import Routes from './routes.js';
+import store from './store/index';
 
 import './assets/css/reset.css';
 import './assets/css/public.css';
@@ -18,5 +19,6 @@ Vue.use(Vuetify, {
 
 new Vue({
   render: h => h(App),
-  router: Routes
+  router: Routes, 
+  store,
 }).$mount('#app');

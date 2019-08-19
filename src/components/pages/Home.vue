@@ -32,10 +32,10 @@
             :img      = "`${explanation.image}`"
             :position = "`${explanation.position}`"
             :title    = "`${explanation.title}`"
-            :parteI   = "`${explanation.parteI}`"
-            :parteII  = "`${explanation.parteII}`"
-            :parteIII = "`${explanation.parteIII}`"
-            :parteIV  = "`${explanation.parteIV}`"/>
+            :textI   = "`${explanation.textI}`"
+            :textII  = "`${explanation.textII}`"
+            :textIII = "`${explanation.textIII}`"
+            :textIV  = "`${explanation.textIV}`"/>
         </v-flex>
       </v-layout>
     </v-container>

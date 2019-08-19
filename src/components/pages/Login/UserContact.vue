@@ -4,7 +4,10 @@
       <v-icon>fas fa-chevron-left</v-icon>
     </router-link>
 
-    <v-form v-model="valid">
+    <v-form 
+      ref="form"
+      v-model="valid"
+    >
       <v-container fluid>
         <v-layout justify-center mb-4>
           <h2>Dados do perfil</h2>
@@ -15,14 +18,14 @@
 
             <v-text-field
               label="Celular"
-              v-model="email"
+              v-model="user.phone"
               :rules="fiedsRequired"
               required
               outline
             ></v-text-field>
 
             <v-checkbox
-              v-model="checkbox"
+              v-model="user.share_phone"
               label="Compartilhar número de WhatsApp"
             ></v-checkbox>
 
@@ -32,7 +35,7 @@
             </v-layout>
 
             <v-layout align-center justify-center column wrapper-button my-5>
-              <v-btn @click="next" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
+              <v-btn @click="submit" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
             </v-layout>
           </v-flex>         
         </v-layout>
@@ -43,24 +46,60 @@
 </template>
 
 <script>
+import api from '../../../services/api';
+import { mapGetters } from 'vuex';
+import { saveStorage } from '../../../utils/saveStorage';
+import storeMonitor from '../../../services/storeMonitor/index'
+
 export default {
   data() {
     return {
+      user: {
+        phone: '',
+        share_phone: false
+      },
       valid: false,
       e1: false,
       fiedsRequired: [ 
-        v => !!v || "E-mail is required",
+        v => !!v || "Preencha o campo celular",
       ],
-      checkbox: false,
     }
   }, 
   methods: {
     clear () {
       this.$refs.form.reset()
     },
-    next() {
-      this.$router.push("/subject");
+    async submit() {
+      if(this.$refs.form.validate()) {
+        const contact = this.user;
+
+        try {
+          const response = await api.post('/register', this.getUser);
+
+          saveStorage(response.data.success);
+
+          const id_user = response.data.success.id;
+          
+          const monitor = {
+            id_user,
+            ...contact
+          }
+          
+          storeMonitor(monitor);
+          this.$router.push('/subject');     
+
+        } catch {
+          alert("Erro: arruma ai");
+        }
+    
+      }
+      
     }
+  },
+  computed: {
+    ...mapGetters({
+      getUser: 'get_user'
+    }),
   },
 }
 </script>

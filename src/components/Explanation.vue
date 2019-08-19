@@ -8,9 +8,9 @@
     
     <div class="text-card">
       <h3>{{this.title}}</h3>
-      <p>{{this.parteI}}</p>
-      <p>{{this.parteII}}</p>
-      <p>{{this.parteIII}}<br>{{this.parteIV}}</p>
+      <p>{{this.textI}}</p>
+      <p>{{this.textII}}</p>
+      <p>{{this.textIII}}<br>{{this.textIV}}</p>
     </div>
 
   </div>
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  props:['img', 'position', 'title', 'parteI', 'parteII', 'parteIII', 'parteIV']
+  props:['img', 'position', 'title', 'textI', 'textII', 'textIII', 'textIV']
 }
 </script>
 

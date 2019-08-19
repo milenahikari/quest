@@ -4,7 +4,10 @@
       <v-icon >fas fa-chevron-left</v-icon>
     </router-link>
 
-    <v-form v-model="valid">
+    <v-form 
+      ref="form"
+      v-model="valid"
+    >
       <v-container fluid>
         <v-layout justify-center mb-4>
           <h2>Dados do perfil</h2>
@@ -41,7 +44,7 @@
             ></v-checkbox>
 
             <v-layout align-center justify-center column wrapper-button>
-              <v-btn @click="submit" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
+              <v-btn @click="next" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
             </v-layout>
           </v-flex>         
         </v-layout>
@@ -53,6 +56,8 @@
 
 <script>
 import api from '../../../services/api';
+import { mapActions, mapGetters } from 'vuex';
+import { saveStorage } from '../../../utils/saveStorage';
 
 export default {
   data() {
@@ -73,28 +78,57 @@ export default {
       ],
     }
   }, 
+
   methods: {
     clear () {
       this.$refs.form.reset()
-    },
-    async submit() {
-      const id_user = JSON.parse(localStorage.getItem('user')).id;
+    }, 
 
-      const profile = {
-        id_user,
-        id_city: this.profile.id_city,
-        course: this.profile.course,
-        teach: this.profile.teach,
+    ...mapActions({
+      setUser: 'set_user'
+    }),
+
+    async next() {
+
+      const { id_city, course, teach } = this.profile;
+
+      if(this.$refs.form.validate()) {
+
+        if(teach) {
+          const data = {
+            ...this.getUser,
+            id_city,
+            course, 
+            teach
+          }
+          
+          this.setUser(data);
+
+          this.$router.push('/user-contact');
+
+        } else {
+
+          const data = {
+            ...this.getUser,
+            id_city,
+            course, 
+            teach
+          }
+
+          try {
+            const response = await api.post('register', data);
+
+            saveStorage(response.data.success);
+
+            this.$router.push("/");
+            
+          } catch(e) {
+            alert("Erro: arruma ai");
+            console.log(e);
+          }
+          
+        }  
       }
-      try {
-        const response = await api.put('users/update', profile);
-
-        (this.profile.teach == false) ? this.$router.push("/") : this.$router.push("user-contact");
-        
-      }catch(e) {
-        alert("Erro");
-        console.log(e);
-      }      
     }
   },
 
@@ -106,7 +140,10 @@ export default {
         return `${entry.name} / ${entry.federated_unit}`
 
       })
-    }
+    },
+    ...mapGetters({
+      getUser: 'get_user',
+    })
   },
 
   watch: {

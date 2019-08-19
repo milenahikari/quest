@@ -5,9 +5,8 @@
     </router-link>
 
     <v-form 
+      ref="form"
       v-model="valid"
-      method="post" 
-      action="https://www.getform.org/f/[YOUR-FORM-ID]"
     >
       <v-container fluid>
         <v-layout justify-center wrap>
@@ -48,7 +47,7 @@
               label="Senha"
               v-model="user.password"
               min="8"
-              @keyup.enter="submit"
+              @keyup.enter="next"
               :append-icon="e1 ? 'fas fa-eye' : 'fas fa-eye-slash'"
               :append-icon-cb="() => (e1 = !e1)"
               :type="e1 ? 'text' : 'password'"
@@ -58,7 +57,7 @@
             ></v-text-field>
 
             <v-layout align-center justify-center column wrapper-button>
-              <v-btn @click="submit" class="q-button mt-5" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
+              <v-btn @click="next" class="q-button mt-5" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
             </v-layout>
           </v-flex>         
         </v-layout>
@@ -69,7 +68,7 @@
 </template>
 
 <script>
-import api from '../../../services/api';
+import { mapActions } from 'vuex';
 
 export default {
   data() {
@@ -100,27 +99,24 @@ export default {
     clear() {
       this.$refs.form.reset()
     },
-    async submit() {
-      const user = {
-        ...this.user,
-        c_password: this.user.password
-      }
-      
-      try {
-        const response = await api.post('/register', user);
 
-        await localStorage.setItem('user', JSON.stringify(response.data.success));
+    ...mapActions({
+      setUser: 'set_user'
+    }),
+    
+    next() {
 
-        api.defaults.headers.Authorization = `Bearer ${response.data.success.token}`
+      if(this.$refs.form.validate()) {
+
+        this.setUser({
+          name: this.user.name,
+          email: this.user.email,
+          password: this.user.password,
+          c_password: this.user.password
+        });
 
         this.$router.push("/user-data");
-        
-      } catch(e) {
-        alert("Erro: arruma ai");
-        console.log(e);
-      }
-
-
+      } 
     }
   },
 }

@@ -1,20 +1,15 @@
 <template>
   <section>
     <h3>Selecione uma categoria</h3>
-    <slick ref="slick" :options="slickOptions">
-      <Category name="Artes" icon="fas fa-palette"/>
-      <Category name="Biologia" icon="fas fa-microscope"/>
-      <Category name="Filosofia" icon="fas fa-puzzle-piece"/>
-      <Category name="Física" icon="fas fa-atom"/>
-      <Category name="Geografia" icon="fas fa-globe-africa"/>
-      <Category name="História" icon="fas fa-archway"/>
-      <Category name="Inglês" icon="fas fa-language"/>
-      <Category name="Literatura" icon="fas fa-book-reader"/>
-      <Category name="Matemática" icon="fas fa-calculator"/>
-      <Category name="Português" icon="fas fa-book"/>
-      <Category name="Química" icon="fas fa-bong"/>
-      <Category name="Sociologia" icon="fas fa-running"/>
+
+    <slick ref="carousel" :options="slickOptions">
+      
+      <div v-for="i in categories" @click="idCategory(i.id)">
+        <Category v-if="itemClicado == i.id" :name="i.name" :icon="i.icon" :selected="true"/>
+        <Category v-else :name="i.name" :icon="i.icon" :selected="false"/>
+      </div>
     </slick>
+
   </section>
 </template>
 
@@ -22,7 +17,8 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slick from 'vue-slick';
-import axios from 'axios';
+import api from '../services/api';
+import { mapActions } from 'vuex';
 
 import Category from './Category.vue';
 
@@ -34,6 +30,8 @@ export default {
   data() {
     return {
       categories: [],
+      clicado: false,
+      itemClicado: 0,
       slickOptions: {
         slidesToShow: 3,
         infinite: true,
@@ -57,10 +55,31 @@ export default {
 
     reInit() {
       this.$refs.slick.reSlick();
+    },
+
+    idCategory(id) {
+      this.clicado = true;
+      this.itemClicado = id;
+      this.setId(id);
+    },
+
+    ...mapActions({
+      setId: 'set_category'
+    })
+  },
+  watch: {
+    categories: function () {
+        let currIndex = this.$refs.carousel.currentSlide()
+
+        this.$refs.carousel.destroy()
+        this.$nextTick(() => {
+        this.$refs.carousel.create()
+        this.$refs.carousel.goTo(currIndex, true)
+        })
     }
   },
   mounted() {
-    axios.get('/data/categories.json')
+    api.get('/category')
       .then(res => this.categories = res.data)
   },
 }

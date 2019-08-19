@@ -1,14 +1,16 @@
 <template>
   <div>
-    <div class="category">
-      <v-icon color="#199854">{{icon}}</v-icon>
-      <span class="text-category">{{this.name}}</span>
+    <div class="category" v-bind:class="{ selected: this.selected }">
+      <v-icon color="#199854" v-bind:class="{ colorWhite: this.selected }">{{icon}}</v-icon>
+      <span class="text-category" v-bind:class="{ colorWhite: this.selected }">{{this.name}}</span>
     </div>
   </div>
 </template>
+
 <script>
+
 export default {
-  props:['name', 'icon'], 
+  props:['name', 'icon', 'selected'], 
 }
 </script>
 
@@ -28,5 +30,11 @@ export default {
 }
 .text-category{
   margin-top: 4px;
+}
+.selected {
+  background: rgb(25, 152, 84);
+}
+.colorWhite {
+  color: white !important;
 }
 </style>

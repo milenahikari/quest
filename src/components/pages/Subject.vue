@@ -12,13 +12,17 @@
 
     <Carousel></Carousel>
 
-    <v-form v-model="valid">
+    <v-form 
+      ref="form"
+      v-model="valid"
+    >
       <v-container fluid>
 
         <v-layout justify-center wrap>
           <v-flex>
 
             <v-text-field
+              v-model= "course.title"
               label="Defina um título"
               type="text"
               :rules="fiedsRequired"
@@ -27,6 +31,7 @@
             ></v-text-field>
 
             <v-textarea
+              v-model= "course.description"
               label="Descreva o curso:"
               :rules="fiedsRequired"
               outline
@@ -34,7 +39,7 @@
             ></v-textarea>
 
             <v-layout align-center justify-center column wrapper-button>
-              <v-btn @click="next" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Cadastrar</v-btn>
+              <v-btn @click="submit" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Cadastrar</v-btn>
             </v-layout>
           </v-flex>         
         </v-layout>
@@ -45,6 +50,9 @@
 </template>
 
 <script>
+import api from '../../services/api';
+import { mapGetters } from 'vuex';
+
 import Carousel from '../Carousel.vue';
 
 export default {
@@ -55,6 +63,11 @@ export default {
       fiedsRequired: [ 
         v => !!v || "E-mail is required",
       ],
+      course: {
+        id_category: '',
+        title: '',
+        description: ''
+      }
     }
   },
   components: {
@@ -64,9 +77,33 @@ export default {
     clear () {
       this.$refs.form.reset()
     },
-    next() {
-      this.$router.push("/alert");
+    
+    async submit() {
+
+      if(this.$refs.form.validate()) {
+
+        try {
+
+          const { id_monitor } = JSON.parse(localStorage.getItem('monitor'));
+          const id_category = this.id_category;
+
+          const response = await api.post('course',
+            {...this.course, id_monitor, id_category});
+
+          this.$router.push('/');
+
+        } catch(e) {
+          alert("Erro: arruma ai");
+            console.log(e);
+        }
+      
+      }
     }
+  },
+  computed: {
+    ...mapGetters({
+      id_category: 'get_category'
+    })
   },
 }
 </script>
