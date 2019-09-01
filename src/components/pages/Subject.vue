@@ -12,6 +12,15 @@
 
     <Carousel></Carousel>
 
+    <v-alert
+      type="warning"
+      border="border-left"
+      color="yellow darken-2"
+      v-model="show"
+      dismissible="true"
+    >
+      Escolha uma das categorias acima
+    </v-alert>
     <v-form 
       ref="form"
       v-model="valid"
@@ -59,6 +68,7 @@ export default {
   data() {
     return {
       valid: false,
+      show: false,
       e1: false,
       fiedsRequired: [ 
         v => !!v || "E-mail is required",
@@ -81,6 +91,11 @@ export default {
     async submit() {
 
       if(this.$refs.form.validate()) {
+
+        if(this.id_category == '') {
+          this.show = true;
+          return;
+        }
 
         try {
 

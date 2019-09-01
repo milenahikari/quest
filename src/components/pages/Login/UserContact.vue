@@ -20,6 +20,7 @@
               label="Celular"
               v-model="user.phone"
               :rules="fiedsRequired"
+              v-mask="mask"
               required
               outline
             ></v-text-field>
@@ -49,15 +50,20 @@
 import api from '../../../services/api';
 import { mapGetters } from 'vuex';
 import { saveStorage } from '../../../utils/saveStorage';
-import storeMonitor from '../../../services/storeMonitor/index'
+import storeMonitor from '../../../services/storeMonitor/index';
+import { mask } from 'vue-the-mask';
 
 export default {
+  directives: {
+    mask,
+  },
   data() {
     return {
       user: {
         phone: '',
         share_phone: false
       },
+      mask: '(##) #####-####',
       valid: false,
       e1: false,
       fiedsRequired: [ 

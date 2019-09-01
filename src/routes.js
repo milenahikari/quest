@@ -15,7 +15,7 @@ import Medals from './components/pages/Medals.vue';
 import Monitor from './components/pages/Monitor.vue';
 import MonitorContact from './components/pages/MonitorContact.vue';
 import Alert from './components/pages/Alert.vue';
-import Teste from './components/pages/Teste.vue';
+import Search from './components/pages/Search.vue';
 
 Vue.use(VueRouter);
 
@@ -94,10 +94,10 @@ const routers = new VueRouter({
       component: Alert
     },
     {
-      path: '/teste', 
-      name: 'teste',
-      component: Teste
-    }
+      path: '/search',
+      name: 'search',
+      component: Search
+    },
   ]
 });
 

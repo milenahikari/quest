@@ -51,7 +51,7 @@ export default {
   computed: {
     searchCities(){
       return this.result_cities.map(entry => {
-        this.profile.id_city = entry.id_city;
+        // this.profile.id_city = entry.id_city;
 
         return `${entry.name} / ${entry.federated_unit}`
 
@@ -72,8 +72,5 @@ export default {
 }
 </script>
 
-<style scoped>
-h1 {
-  margin-bottom: 12px;
-}
+<style>
 </style>

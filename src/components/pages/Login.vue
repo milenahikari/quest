@@ -1,5 +1,6 @@
 <template>
   <v-container grid-list-xl>
+  
     <router-link to="/">
       <v-icon >fas fa-chevron-left</v-icon>
     </router-link>
@@ -10,14 +11,17 @@
       </v-flex>
     </v-layout>
 
-    <v-form v-model="valid">
+    <v-form 
+      ref="form"
+      v-model="valid"
+    >
       <v-container>
         <v-layout justify-center wrap>
           <v-flex xs12 sm6>
 
             <v-text-field
               label="Email"
-              v-model="email"
+              v-model="user.email"
               :rules="emailRules"
               required
               outline
@@ -25,8 +29,9 @@
 
             <v-text-field
               label="Senha"
-              v-model="password"
+              v-model="user.password"
               min="8"
+              @keyup.enter="submit"
               :append-icon="e1 ? 'fas fa-eye' : 'fas fa-eye-slash'"
               :append-icon-cb="() => (e1 = !e1)"
               :type="e1 ? 'text' : 'password'"
@@ -36,8 +41,21 @@
             ></v-text-field>
 
             <v-layout align-center justify-center column wrapper-button>
-              <v-btn @click="submit" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Login</v-btn>
-              <router-link to="/register" class="mt-3">Ainda não é membro?</router-link>
+
+              <v-btn 
+                @click="submit" 
+                class="q-button" 
+                :class=" { 'btnGreen' : valid, disabled: !valid }"
+              >Login
+              </v-btn>
+
+              <router-link 
+                to="/register" 
+                class="mt-3"
+              >
+                Ainda não é membro?
+              </router-link>
+
             </v-layout>
           </v-flex>         
         </v-layout>
@@ -48,19 +66,23 @@
 </template>
 
 <script>
+import api from '../../services/api';
+
 export default {
   data() {
     return {
+      user: {
+        email: '',
+        password: '',
+      },
       valid: false,
       e1: false,
-      email: '',
       emailRules: [ 
-        v => !!v || "E-mail is required",
+        v => !!v || "E-mail é obrigatório",
         v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
       ],
-      password: '',
       passwordRules: [
-        v => !!v || 'Password is required',        
+        v => !!v || 'Senha é obrigatório',        
       ],
     }
   }, 
@@ -68,8 +90,20 @@ export default {
     clear() {
       this.$refs.form.reset();
     },
-    submit() {
-      alert('Apertou no botao');
+    async submit() {
+      if(this.$refs.form.validate()) {
+        try {
+          const response = await api.post('login', this.user);
+
+          saveStorage(response.data.success);
+
+          this.$router.push('/');
+
+        } catch(e) {
+          alert("Erro: arruma ai");
+          console.log(e);
+        }
+      }
     }
   },
 }

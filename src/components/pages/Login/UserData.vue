@@ -74,7 +74,7 @@ export default {
 
       valid: false,
       fiedsRequired: [ 
-        v => !!v || "E-mail is required",
+        v => !!v || "Campo é obrigatório",
       ],
     }
   }, 
