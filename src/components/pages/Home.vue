@@ -2,24 +2,25 @@
   <section class="homeBackground">
     <Header></Header>
     
-      <v-layout justify-center wrap>
-        <v-flex 
-          d-flex shrink 
-          v-for="explanation in explanations"
-          :key="explanation.title"
-        >
-          <Explanation 
-            :img      = "`${explanation.image}`"
-            :position = "`${explanation.position}`"
-            :title    = "`${explanation.title}`"
-            :textI   = "`${explanation.textI}`"
-            :textII  = "`${explanation.textII}`"
-            :textIII = "`${explanation.textIII}`"
-            :textIV  = "`${explanation.textIV}`"/>
-        </v-flex>
+      <v-container grid-list-xl>
+        <v-layout justify-center wrap>
+          <v-flex 
+            d-flex shrink 
+            v-for="explanation in explanations"
+            :key="explanation.title"
+          >
+            <Explanation 
+              :img      = "`${explanation.image}`"
+              :position = "`${explanation.position}`"
+              :title    = "`${explanation.title}`"
+              :textI   = "`${explanation.textI}`"
+              :textII  = "`${explanation.textII}`"
+              :textIII = "`${explanation.textIII}`"
+              :textIV  = "`${explanation.textIV}`"/>
+          </v-flex>
 
-      </v-layout>
-    </v-container>
+        </v-layout>
+      </v-container>
     <Footer></Footer>
   </section>
 </template>

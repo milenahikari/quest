@@ -16,6 +16,7 @@ import Monitor from './components/pages/Monitor.vue';
 import MonitorContact from './components/pages/MonitorContact.vue';
 import Alert from './components/pages/Alert.vue';
 import Search from './components/pages/Search.vue';
+import Teste from './components/pages/Teste.vue';
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,11 @@ const routers = new VueRouter({
   mode: 'history',
 
   routes: [
+    {
+      path: '/teste',
+      name: 'teste',
+      component: Teste
+    },
     {
       path: '/',
       name: 'home',

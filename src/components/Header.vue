@@ -1,7 +1,7 @@
 <template>
   <section class="white">
-    <Menu></Menu>
 
+    <Menu></Menu>
   
     <v-container fluid>
       <v-layout justify-center column>
@@ -13,8 +13,7 @@
         ></v-text-field>
 
         <v-autocomplete
-          v-model="city"
-          :items="searchCities"
+          :items="items"
           :search-input.sync="search"
           hide-no-data
           label="Cidade"
@@ -24,12 +23,15 @@
         ></v-autocomplete>
 
       </v-layout>
+      {{ message }}
+      
       <Carousel></Carousel>
     </v-container>
   </section>
 </template>
 
 <script>
+import lodash from 'vue-lodash';
 import api from '../services/api';
 
 import Menu from './Menu.vue';
@@ -38,8 +40,8 @@ import Carousel from './Carousel.vue';
 export default {
   data(){
     return {
-      city: null,
-      search: null,
+      search: '',
+      message: '',
       result_cities: [],
     }
   },
@@ -48,8 +50,36 @@ export default {
     Carousel
   },
 
+  watch: {
+    search: function (newCity, oldCity) {    
+      this.message = 'Digitando';
+      this.debouncedGetCity()
+    }
+  },
+
+  created: function () {
+    this.debouncedGetCity = _.debounce(this.getCity, 500)
+  },
+
+  methods: {
+    getCity: function () {
+      this.message = 'Pensando...'
+
+      var vm = this
+      api.get(`search_city/${this.search}`)
+        .then(function (response) {
+          
+          this.result_cities = response.data;
+        })
+        .catch(function (error) {
+          vm.message = 'Erro ao executar a API' + error
+        })
+    }
+  },
+
+
   computed: {
-    searchCities(){
+    items(){
       return this.result_cities.map(entry => {
         // this.profile.id_city = entry.id_city;
 
@@ -57,16 +87,6 @@ export default {
 
       })
     }
-  },
-
-  watch: {
-    async search (val) {
-
-      const response = await api.get(`search_city/${val}`);
-
-      this.result_cities = response.data;
-
-    },
   },
 
 }
