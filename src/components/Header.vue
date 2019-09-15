@@ -13,17 +13,20 @@
         ></v-text-field>
 
         <v-autocomplete
-          :items="items"
+          v-model="city"
+          :items="cities"
           :search-input.sync="search"
           hide-no-data
+          hide-selected
           label="Cidade"
           name="city"
           outline
           return-object
+          no-filter
+          item-text="name"
         ></v-autocomplete>
 
       </v-layout>
-      {{ message }}
       
       <Carousel></Carousel>
     </v-container>
@@ -31,7 +34,6 @@
 </template>
 
 <script>
-import lodash from 'vue-lodash';
 import api from '../services/api';
 
 import Menu from './Menu.vue';
@@ -40,57 +42,30 @@ import Carousel from './Carousel.vue';
 export default {
   data(){
     return {
-      search: '',
-      message: '',
-      result_cities: [],
+      id_city: '',
+
+      city: null,
+      search: null,
+      cities: [],
     }
   },
+
   components: {
     Menu,
     Carousel
   },
 
   watch: {
-    search: function (newCity, oldCity) {    
-      this.message = 'Digitando';
-      this.debouncedGetCity()
-    }
-  },
-
-  created: function () {
-    this.debouncedGetCity = _.debounce(this.getCity, 500)
-  },
-
-  methods: {
-    getCity: function () {
-      this.message = 'Pensando...'
-
-      var vm = this
-      api.get(`search_city/${this.search}`)
-        .then(function (response) {
-          
-          this.result_cities = response.data;
+    search (val) {
+      api.get(`search_city?q=${val}`)
+        .then(data => this.cities = data.data.map( item => {
+          this.id_city = item.id_city;    
+          return ({
+            name: `${item.name} / ${item.federated_unit}`
+          })
         })
-        .catch(function (error) {
-          vm.message = 'Erro ao executar a API' + error
-        })
-    }
+        )
+    },
   },
-
-
-  computed: {
-    items(){
-      return this.result_cities.map(entry => {
-        // this.profile.id_city = entry.id_city;
-
-        return `${entry.name} / ${entry.federated_unit}`
-
-      })
-    }
-  },
-
 }
 </script>
-
-<style>
-</style>

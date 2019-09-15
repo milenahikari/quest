@@ -18,15 +18,16 @@
 
             <v-autocomplete
               v-model="city"
-              :items="searchCities"
+              :items="cities"
               :search-input.sync="search"
-              :rules="fiedsRequired"
               hide-no-data
+              hide-selected
               label="Cidade"
               name="city"
-              required
               outline
               return-object
+              no-filter
+              item-text="name"
             ></v-autocomplete>
 
             <v-text-field
@@ -70,7 +71,7 @@ export default {
 
       city: null,
       search: null,
-      result_cities: [],
+      cities: [],
 
       valid: false,
       fiedsRequired: [ 
@@ -133,26 +134,21 @@ export default {
   },
 
   computed: {
-    searchCities(){
-      return this.result_cities.map(entry => {
-        this.profile.id_city = entry.id_city;
-
-        return `${entry.name} / ${entry.federated_unit}`
-
-      })
-    },
     ...mapGetters({
       getUser: 'get_user',
     })
   },
 
   watch: {
-    async search (val) {
-
-      const response = await api.get(`search_city/${val}`);
-
-      this.result_cities = response.data;
-
+    search (val) {
+      api.get(`search_city?q=${val}`)
+        .then(data => this.cities = data.data.map( item => {
+          this.profile.id_city = item.id_city;    
+          return ({
+            name: `${item.name} / ${item.federated_unit}`
+          })
+        })
+        )
     },
   },
 }
