@@ -34,6 +34,19 @@
           </v-list-tile-content>
           
         </v-list-tile>
+
+        <v-list-tile
+          @click="logOut"
+        >
+          <v-list-tile-action>
+            <v-icon>fas fa-sign-out-alt</v-icon>
+          </v-list-tile-action>
+
+          <v-list-tile-content>
+            <v-list-tile-title>Sair</v-list-tile-title>
+          </v-list-tile-content>
+          
+        </v-list-tile>
       </v-list>
       
     </v-navigation-drawer>
@@ -42,26 +55,56 @@
 
 <script>
 import api from '../services/api';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   data() {
     return {
       drawer: false,
-      isLogged: false,
+      // isLogged: false,
       items: [],
     }
   },
+
   methods: {
     hide() {
       this.drawer = !this.drawer;
     }, 
+
     toRouter(url) {
       this.$router.push(`${url}`);
+    },
+
+    ...mapActions({
+      setLogin: 'set_login'
+    }),
+
+    logOut() {
+      //Limpa o state
+      this.setLogin(false)
+
+      //Limpa o Local Storage
+      localStorage.removeItem('monitor')
+      localStorage.removeItem('user')
+      localStorage.removeItem('vuex')
+
+      this.$router.push('/')
+
+      //Fecha menu lateral
+      this.drawer = false
     }
+
   },
+
   mounted() {
     api.get('/menus')
       .then(res => this.items = res.data)
+  },
+
+  computed: {
+    ...mapGetters({
+      isLogged: 'get_login'
+    })
   },
 }
 </script>

@@ -67,6 +67,8 @@
 
 <script>
 import api from '../../services/api';
+import { saveStorage } from '../../utils/saveStorage';
+import { mapActions } from 'vuex';
 
 export default {
   data() {
@@ -90,12 +92,15 @@ export default {
     clear() {
       this.$refs.form.reset();
     },
+
     async submit() {
       if(this.$refs.form.validate()) {
         try {
           const response = await api.post('login', this.user);
 
           saveStorage(response.data.success);
+
+          this.setLogin(true)
 
           this.$router.push('/');
 
@@ -104,7 +109,11 @@ export default {
           console.log(e);
         }
       }
-    }
+    },
+
+    ...mapActions({
+      setLogin: 'set_login'
+    })
   },
 }
 </script>
