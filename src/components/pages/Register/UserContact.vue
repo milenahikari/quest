@@ -80,13 +80,19 @@ export default {
         const contact = this.user;
 
         try {
-          const response = await api.post('/register', this.getUser);
+          const response = await api.post('/register', this.getRegister);
 
           saveStorage(response.data.success);
 
           this.setLogin(true);
 
-          const id_user = response.data.success.id;
+          this.setRegister(false);
+
+          const profile = response.data.success.profile;
+
+          this.setProfile(profile)
+
+          const id_user = profile.id;
           
           const monitor = {
             id_user,
@@ -105,13 +111,15 @@ export default {
     },
 
     ...mapActions({
-      setLogin: 'set_login'
+      setLogin: 'set_login',
+      setRegister: 'set_register',
+      setProfile: 'set_profile',
     })
 
   },
   computed: {
     ...mapGetters({
-      getUser: 'get_user'
+      getRegister: 'get_register'
     }),
   },
 }

@@ -86,7 +86,8 @@ export default {
     }, 
 
     ...mapActions({
-      setUser: 'set_user',
+      setRegister: 'set_register',
+      setProfile: 'set_profile',
       setLogin: 'set_login'
     }),
 
@@ -98,20 +99,20 @@ export default {
 
         if(teach) {
           const data = {
-            ...this.getUser,
+            ...this.getRegister,
             id_city,
             course, 
             teach
           }
           
-          this.setUser(data);
+          this.setRegister(data);
 
           this.$router.push('/user-contact');
 
         } else {
 
           const data = {
-            ...this.getUser,
+            ...this.getRegister,
             id_city,
             course, 
             teach
@@ -122,9 +123,13 @@ export default {
 
             saveStorage(response.data.success);
 
-            this.setLogin(true)
-            
-            this.setUser(data);
+            this.setLogin(true);
+
+            this.setRegister(false);
+
+            const profile = response.data.success.profile;
+
+            this.setProfile(profile)
 
             this.$router.push("/");
             
@@ -140,7 +145,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      getUser: 'get_user',
+      getRegister: 'get_register',
     })
   },
 

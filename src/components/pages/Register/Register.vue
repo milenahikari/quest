@@ -101,14 +101,14 @@ export default {
     },
 
     ...mapActions({
-      setUser: 'set_user'
+      setRegister: 'set_register'
     }),
     
     next() {
 
       if(this.$refs.form.validate()) {
 
-        this.setUser({
+        this.setRegister({
           name: this.user.name,
           email: this.user.email,
           password: this.user.password,

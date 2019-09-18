@@ -1,6 +1,6 @@
 export default {
   user: {
   },
-  profile: {
+  register: {
   },
 }

@@ -1,6 +1,6 @@
 export default {
-  SET_USER(state, value) {
-    state.user = value;
+  SET_REGISTER(state, value) {
+    state.register = value;
   },
 
   SET_PROFILE(state, value) {

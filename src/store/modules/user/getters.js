@@ -1,6 +1,6 @@
 export default {
-  get_user(state) {
-    return state.user;
+  get_register(state) {
+    return state.register;
   },
 
   get_profile(state) {
