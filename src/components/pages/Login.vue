@@ -81,7 +81,7 @@ export default {
       e1: false,
       emailRules: [ 
         v => !!v || "E-mail é obrigatório",
-        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail é obrigatório'
       ],
       passwordRules: [
         v => !!v || 'Senha é obrigatório',        
@@ -98,9 +98,14 @@ export default {
         try {
           const response = await api.post('login', this.user);
 
-          saveStorage(response.data.success);
+          saveStorage(response.data.success.token);
 
           this.setLogin(true)
+
+          const profile = response.data.success.profile;
+
+          console.log(profile)
+          this.setProfile(profile)
 
           this.$router.push('/');
 
@@ -112,7 +117,8 @@ export default {
     },
 
     ...mapActions({
-      setLogin: 'set_login'
+      setLogin: 'set_login',
+      setProfile: 'set_profile',
     })
   },
 }

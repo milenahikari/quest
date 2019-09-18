@@ -3,9 +3,9 @@ import VueRouter from 'vue-router';
 
 import Home from './components/pages/Home.vue';
 import Login from './components/pages/Login.vue';
-import Register from './components/pages/Login/Register.vue';
-import UserData from './components/pages/Login/UserData.vue';
-import UserContact from './components/pages/Login/UserContact.vue';
+import Register from './components/pages/Register/Register.vue';
+import UserData from './components/pages/Register/UserData.vue';
+import UserContact from './components/pages/Register/UserContact.vue';
 import Subject from './components/pages/Subject.vue';
 import Profile from './components/pages/Profile.vue';
 import MyCourses from './components/pages/MyCourses.vue';
@@ -16,7 +16,7 @@ import Monitor from './components/pages/Monitor.vue';
 import MonitorContact from './components/pages/MonitorContact.vue';
 import Alert from './components/pages/Alert.vue';
 import Search from './components/pages/Search.vue';
-import Teste from './components/pages/Teste.vue';
+import Teste2 from './components/pages/Teste2.vue';
 
 Vue.use(VueRouter);
 
@@ -27,7 +27,7 @@ const routers = new VueRouter({
     {
       path: '/teste',
       name: 'teste',
-      component: Teste
+      component: Teste2
     },
     {
       path: '/',

@@ -1,58 +1,97 @@
 <template>
-  <div id="watch-example">
-    <p>
-      Faça uma pergunta do tipo sim/não:
-      <input v-model="question">
-    </p>
-    <p>{{ answer }}</p>
-  </div>
+  <v-container fluid>
+    <router-link to="/">
+      <v-icon >fas fa-chevron-left</v-icon>
+    </router-link>
+
+    <v-layout justify-center wrap mb-2>
+          <v-flex d-flex shrink>
+            <v-avatar
+              size="110px"
+              color="grey lighten-4"
+            >
+              <v-icon>fas fa-user-plus</v-icon>
+            </v-avatar>
+          </v-flex>
+        </v-layout>
+
+        <v-layout justify-center>
+          <h2>Meu Perfil</h2>
+        </v-layout>
+
+        <layout>
+          <v-tabs
+            v-model="tabs"
+            slider-color="#9A1982"
+            fixed-tabs
+            m-top="2"
+          >
+            <v-tab 
+              v-for="menu in menus" 
+              :key="menu"
+            >
+              <p style="color: black">{{ menu }} </p>
+            </v-tab>
+          </v-tabs>
+        </layout>
+
+        <v-tabs-items v-model="tabs">
+          <v-tab-item>
+            <p>1</p>
+          </v-tab-item>
+          <v-tab-item>
+            <p>2</p>
+          </v-tab-item>
+          <v-tab-item>
+            <p>3</p>
+          </v-tab-item>
+        </v-tabs-items>    
+  </v-container>
 </template>
 
 <script>
-import axios from 'axios';
-import lodash from 'vue-lodash';
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
     return {
-      question: '',
-      answer: 'Eu não posso responder até que você faça uma pergunta!'
+      valid: false,
+      e1: false,
+      fiedsRequired: [ 
+        v => !!v || "E-mail is required",
+      ],
+      checkTeach: true,
+      checkShare: true,
+      emailRules: [ 
+        v => !!v || "E-mail is required",
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+      ],
+
+      tabs: null,
+      menus: [
+        'Dados',
+        'Contato',
+        'Senha'
+      ],
     }
-  },
-  watch: {
-    // sempre que a pergunta mudar, essa função será executada
-    question: function (newQuestion, oldQuestion) {
-      this.answer = 'Esperando você parar de escrever...'
-      this.debouncedGetAnswer()
-    }
-  },
-  created: function () {
-    // _.debounce é uma função fornecida pelo lodash para limitar
-    // a frequência que uma operação complexa pode ser executada.
-    // Neste caso, queremos limitar a frequência com que acessamos
-    // a yesno.wtf/api, esperando que o usuário termine completamente
-    // a digitação antes de realizar a chamada Ajax. Para aprender
-    // mais sobre a função _.debounce (e sua prima _.throttle),
-    // visite: https://lodash.com/docs#debounce
-    this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
-  },
+  }, 
+
   methods: {
-    getAnswer: function () {
-      if (this.question.indexOf('?') === -1) {
-        this.answer = 'Perguntas geralmente têm uma interrogação. ;-)'
-        return
-      }
-      this.answer = 'Pensando...'
-      var vm = this
-      axios.get('https://yesno.wtf/api')
-        .then(function (response) {
-          vm.answer = response.data.answer === 'yes' ? 'Sim.' :
-            response.data.answer === 'no' ? 'Não.' : 'Talvez!'
-        })
-        .catch(function (error) {
-          vm.answer = 'Erro! Não pode executar a API. ' + error
-        })
+    clear() {
+      this.$refs.form.reset()
+    },
+    next() {
+      this.$router.push("/");
     }
-  }
+  },
+
+  computed: {
+    ...mapGetters({
+      getProfile: 'get_profile'
+    })
+  },
 }
 </script>
+
+<style scoped>
+</style>

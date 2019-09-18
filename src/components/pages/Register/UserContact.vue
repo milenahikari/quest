@@ -48,7 +48,7 @@
 
 <script>
 import api from '../../../services/api';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { saveStorage } from '../../../utils/saveStorage';
 import storeMonitor from '../../../services/storeMonitor/index';
 import { mask } from 'vue-the-mask';
@@ -84,6 +84,8 @@ export default {
 
           saveStorage(response.data.success);
 
+          this.setLogin(true);
+
           const id_user = response.data.success.id;
           
           const monitor = {
@@ -100,7 +102,12 @@ export default {
     
       }
       
-    }
+    },
+
+    ...mapActions({
+      setLogin: 'set_login'
+    })
+
   },
   computed: {
     ...mapGetters({

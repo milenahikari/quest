@@ -1,6 +1,11 @@
 <template>
   <v-container grid-list-xl>
-    <router-link to="/user-contact">
+
+    <router-link v-if="isLogged" to="/my-courses">
+      <v-icon >fas fa-chevron-left</v-icon>
+    </router-link>
+
+    <router-link v-else to="/user-contact">
       <v-icon >fas fa-chevron-left</v-icon>
     </router-link>
 
@@ -117,7 +122,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      id_category: 'get_category'
+      id_category: 'get_category',
+      isLogged: 'get_login'
     })
   },
 }

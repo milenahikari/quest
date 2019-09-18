@@ -86,7 +86,8 @@ export default {
     }, 
 
     ...mapActions({
-      setUser: 'set_user'
+      setUser: 'set_user',
+      setLogin: 'set_login'
     }),
 
     async next() {
@@ -120,6 +121,10 @@ export default {
             const response = await api.post('register', data);
 
             saveStorage(response.data.success);
+
+            this.setLogin(true)
+            
+            this.setUser(data);
 
             this.$router.push("/");
             

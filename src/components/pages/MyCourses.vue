@@ -24,13 +24,15 @@
     <v-divider></v-divider>
 
     <v-flex mt-1>
-      <Courses txtButton="Nova matéria" showButton="yes" router="/"></Courses>
+      <Courses txtButton="Nova matéria" showButton="yes" router="/subject"></Courses>
     </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+import api from '../../services/api';
+
 import Courses from '../Courses.vue';
 
 export default {
