@@ -5,13 +5,6 @@
   
     <v-container fluid>
       <v-layout justify-center column>
-        <h1>Busque pelas matérias que possui dificuldade e colabore compartilhando conhecimentos</h1>
-        <v-text-field
-          label="O que você quer aprender?"
-          type="text"
-          outline
-        ></v-text-field>
-
         <v-autocomplete
           v-model="city"
           :items="cities"
@@ -25,6 +18,14 @@
           no-filter
           item-text="name"
         ></v-autocomplete>
+        
+        <v-text-field
+          label="O que você quer aprender?"
+          type="text"
+          outline
+        ></v-text-field>
+
+        
 
       </v-layout>
       

@@ -25,7 +25,7 @@ export default {
 <style scoped>
 .card{
   width:328px;
-  height: 466px;
+  height: 490px;
   background: #BD5CAA;
   border-radius: 10px;
   margin-bottom: 20px;

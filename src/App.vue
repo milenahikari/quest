@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <div class="mt-3">
-      <transition name="slide-fade">
-        <router-view></router-view>
-      </transition>
-    </div>
+    <transition name="slide-fade">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 

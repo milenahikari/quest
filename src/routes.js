@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import Definition from './components/pages/Definition.vue';
 import Home from './components/pages/Home.vue';
 import Login from './components/pages/Login.vue';
 import Register from './components/pages/Register/Register.vue';
@@ -28,6 +29,11 @@ const routers = new VueRouter({
       path: '/teste',
       name: 'teste',
       component: Teste2
+    },
+    {
+      path: '/definition',
+      name: 'definition',
+      component: Definition
     },
     {
       path: '/',
