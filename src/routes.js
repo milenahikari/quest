@@ -16,7 +16,6 @@ import Medals from './components/pages/Medals.vue';
 import Monitor from './components/pages/Monitor.vue';
 import MonitorContact from './components/pages/MonitorContact.vue';
 import Alert from './components/pages/Alert.vue';
-import Search from './components/pages/Search.vue';
 import Teste2 from './components/pages/Teste2.vue';
 
 Vue.use(VueRouter);
@@ -38,7 +37,10 @@ const routers = new VueRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        auth: true,
+      }
     },
     {
       path: '/login',
@@ -104,12 +106,7 @@ const routers = new VueRouter({
       path: '/alert',
       name: 'alert',
       component: Alert
-    },
-    {
-      path: '/search',
-      name: 'search',
-      component: Search
-    },
+    }
   ]
 });
 

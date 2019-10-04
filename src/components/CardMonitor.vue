@@ -47,7 +47,7 @@
 import axios from 'axios';
 
 export default {
-  props: ['name', 'course', 'city', 'state', 'rating'],
+  props: ['idMonitor', 'name', 'course', 'city', 'state', 'rating'],
   data() {
     return {
       stars: [],

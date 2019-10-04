@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid mt-3>
     <router-link to="/">
       <v-icon >fas fa-chevron-left</v-icon>
     </router-link>

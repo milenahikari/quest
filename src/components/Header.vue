@@ -1,40 +1,49 @@
 <template>
-  <section class="white">
+  <section>
 
     <Menu></Menu>
   
-    <v-container fluid>
-      <v-layout justify-center column>
-        <v-autocomplete
-          v-model="city"
-          :items="cities"
-          :search-input.sync="search"
-          hide-no-data
-          hide-selected
-          label="Cidade"
-          name="city"
-          outline
-          return-object
-          no-filter
-          item-text="name"
-        ></v-autocomplete>
-        
+    <v-layout justify-center column mt-4>
+      <v-autocomplete
+        v-model="city"
+        :items="cities"
+        :search-input.sync="searchCity"
+        hide-no-data
+        hide-selected
+        label="Localização"
+        name="city"
+        placeholder="Defina sua cidade"
+        color="#9A1982"
+        return-object
+        no-filter
+        item-text="name"
+      ></v-autocomplete>
+      
+      <v-layout>
         <v-text-field
+          v-model="searchCourse"
           label="O que você quer aprender?"
           type="text"
+          color="#9A1982"
           outline
         ></v-text-field>
 
-        
+        <v-btn flat icon @click="search" class="q-search"><v-icon>fas fa-search</v-icon></v-btn>
 
+
+        <p class='color'>Ola</p>
       </v-layout>
-      
-      <Carousel></Carousel>
-    </v-container>
+
+    </v-layout>
+    
+    <Carousel></Carousel>
+
+
   </section>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import api from '../services/api';
 
 import Menu from './Menu.vue';
@@ -43,11 +52,11 @@ import Carousel from './Carousel.vue';
 export default {
   data(){
     return {
-      id_city: '',
-
+      id_city: null,
       city: null,
-      search: null,
+      searchCity: null,
       cities: [],
+      searchCourse: null,
     }
   },
 
@@ -57,7 +66,7 @@ export default {
   },
 
   watch: {
-    search (val) {
+    searchCity (val) {
       api.get(`search_city?q=${val}`)
         .then(data => this.cities = data.data.map( item => {
           this.id_city = item.id_city;    
@@ -68,5 +77,31 @@ export default {
         )
     },
   },
+
+  methods: {
+    ...mapActions({
+      setMonitors: 'set_monitors'
+    }),
+
+    async search() {
+      if(this.id_city == null) return alert("Defina uma cidade");
+      if(this.searchCourse == null) return alert("Digite o curso que gostaria de aprender");
+      try {
+        const response = await api.get('/search/course', {
+          params: { 
+            'idCity': this.id_city,
+            'course': this.searchCourse
+          },
+        });
+
+        this.setMonitors(response.data);            
+
+      } catch(e) {
+        alert("Problema ao realizar a pesquisa, tente novamente mais tarde...");
+        console.log(e);
+      }
+    }
+  },
+  
 }
 </script>

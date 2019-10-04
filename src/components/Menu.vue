@@ -1,21 +1,26 @@
 <template>
   <section>
     <v-toolbar flat color="white">
+      <router-link to="/">
+        <v-img :src="require('../../src/assets/img/quest.png')" class="logo"/>
+      </router-link>
+      
+      <v-spacer></v-spacer>
+      
       <v-toolbar-side-icon v-if="isLogged" class="menuIcon" v-on:click="hide"></v-toolbar-side-icon>
+
       <router-link to="/login" v-else class="wrapper-icon">
         <v-icon>fas fa-user-circle</v-icon>
         <span>Login</span>
       </router-link>
-      <v-spacer></v-spacer>
-      <router-link to="/">
-        <v-img :src="require('../../src/assets/img/quest.png')" class="logo"/>
-      </router-link>
+
     </v-toolbar>
 
     <v-navigation-drawer 
       v-model="drawer" 
-      absolute 
+      app 
       temporary
+      right
     >
 
       <v-list>
@@ -61,7 +66,6 @@ export default {
   data() {
     return {
       drawer: false,
-      // isLogged: false,
       items: [],
     }
   },

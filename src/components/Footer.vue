@@ -1,6 +1,6 @@
 <template>
   <v-footer height="170px" color="white">
-    <v-container fluid>
+    <v-layout column>
       <v-layout justify-start column>
         <router-link to="quem-somos" class="titleAbout">Quem somos</router-link>
         <router-link to="nossos-valores" class="titleAbout">Nossos Valores</router-link>
@@ -9,7 +9,7 @@
       <v-flex class="copyright">
         &copy;{{ new Date().getFullYear() }} <span>QUEST</span>
       </v-flex>
-    </v-container>
+    </v-layout>
   </v-footer>
 </template>
 

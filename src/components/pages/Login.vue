@@ -104,10 +104,9 @@ export default {
 
           const profile = response.data.success.profile;
 
-          console.log(profile)
           this.setProfile(profile)
-
-          this.$router.push('/');
+          
+          await this.$router.push('/');
 
         } catch(e) {
           alert("Erro: arruma ai");

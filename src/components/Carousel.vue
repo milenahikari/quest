@@ -1,7 +1,5 @@
 <template>
   <section>
-    <h3>Selecione uma categoria</h3>
-
     <slick ref="carousel" :options="slickOptions">
       
       <div v-for="i in categories" @click="idCategory(i.id)">
