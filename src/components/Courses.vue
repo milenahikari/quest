@@ -10,7 +10,7 @@
     
     <v-flex>
       <v-layout column
-        v-for="(group) in groups"
+        v-for="(group) in courses"
         :key="group.id"
       >
 
@@ -21,10 +21,10 @@
       
         <v-layout column
           v-for="(item) in group.category.courses"
-          :key="item"
+          :key="item.id"
         >
           <v-layout align-center justify-space-between row>
-            <span class="title-course mt-3">{{item.name}}</span>
+            <span class="title-course mt-3">{{item.title}}</span>
             <div v-if="showButton == 'yes'">
               <button class="btn-icon" @click="deleteCourse"><v-icon class="icon-course">fas fa-trash</v-icon></button>
               <button class="btn-icon" @click="modifyCourse"><v-icon class="icon-course">fas fa-pencil-alt</v-icon></button>
@@ -39,6 +39,7 @@
 
       </v-layout>
     </v-flex> 
+    
     <v-layout row justify-center>
       <v-dialog
         v-model="dialog"
@@ -75,19 +76,21 @@
 </template>
 
 <script>
-import axios from 'axios';
+import api from '../services/api';
 
 export default {
-  props: ['txtButton', 'showButton', 'router'],
+  props: ['txtButton', 'showButton', 'router', 'idMonitor'],
   data() {
     return {
-      groups: [],
+      courses: {},
       dialog: false
     }
   },
   mounted() {
-    axios.get('/data/courses.json')
-      .then(res => this.groups = res.data)
+    api.get(`/monitors/courses/${this.idMonitor}`)
+      .then(
+        res => this.courses = res.data,
+      )
 
   },
   methods: {

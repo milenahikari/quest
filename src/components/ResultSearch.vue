@@ -12,14 +12,20 @@
             :idMonitor="`${monitor.id}`"
             :name="`${monitor.name_monitor}`" 
             :course="`${monitor.course}`"
+            :email="`${monitor.email}`"
             :city="`${monitor.city}`"
             :state="`${monitor.state}`"
             :rating="`${monitor.rating}`"
           ></CardMonitor>
+
         </div>
+
       </v-flex>
+
     </v-layout>
+
   </v-container>
+  
 </template>
 
 <script>
@@ -46,6 +52,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-</style>

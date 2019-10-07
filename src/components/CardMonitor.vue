@@ -2,7 +2,7 @@
   <v-card 
     class="card-monitor mt-3"
     flat
-    to="/monitor"
+    @click="detailMonitor"
   >
     <v-container>
       <v-layout align-center>
@@ -44,20 +44,40 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapActions } from 'vuex';
 
 export default {
-  props: ['idMonitor', 'name', 'course', 'city', 'state', 'rating'],
+  props: ['idMonitor', 'name', 'course', 'email', 'city', 'state', 'rating'],
+
   data() {
     return {
       stars: [],
       number: parseInt(this.rating)
     }
   },
-  mounted() {
-    axios.get('data/monitors.json')
-      .then(res => this.stars = res.data)
+
+  methods: {
+    ...mapActions({
+      setMonitor: 'set_monitor'
+    }),
+    
+    detailMonitor() {
+      const monitor = {
+        'idMonitor': this.idMonitor,
+        'name': this.name, 
+        'course': this.course,
+        'email': this.email,
+        'city': this.city,
+        'state': this.state,
+        'rating': this.rating
+      };
+
+      this.setMonitor(monitor);
+
+      this.$router.push({ name: 'monitor', params: {idMonitor: this.idMonitor}});
+    }
   },
+
 }
 </script>
 

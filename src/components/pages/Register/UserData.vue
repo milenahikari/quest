@@ -28,6 +28,7 @@
               return-object
               no-filter
               item-text="name"
+              class="q-input-register"
             ></v-autocomplete>
 
             <v-text-field

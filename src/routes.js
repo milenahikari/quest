@@ -93,12 +93,13 @@ const routers = new VueRouter({
       component: Medals
     },
     {
-      path: '/monitor',
+      path: '/monitor/:idMonitor',
+      props: true,
       name: 'monitor',
       component: Monitor
     },
     {
-      path: '/monitor-contact',
+      path: '/monitor-contact/',
       name: 'monitor-contact',
       component: MonitorContact
     },

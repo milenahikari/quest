@@ -17,6 +17,7 @@
         return-object
         no-filter
         item-text="name"
+        class="q-input-header"
       ></v-autocomplete>
       
       <v-layout>
@@ -30,8 +31,6 @@
 
         <v-btn flat icon @click="search" class="q-search"><v-icon>fas fa-search</v-icon></v-btn>
 
-
-        <p class='color'>Ola</p>
       </v-layout>
 
     </v-layout>
