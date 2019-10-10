@@ -46,6 +46,13 @@
       </v-form>
 
     </v-layout>
+    <v-alert
+      color="#199854"
+      :value="emailSuccess"
+      type="success"
+    >
+      E-mail enviado com sucesso!
+    </v-alert>
   </v-container>
 </template>
 
@@ -57,6 +64,7 @@ export default {
   data() {
     return {
       mensagem: '',
+      emailSuccess: false,
       valid: false,
       fiedsRequired: [ 
         v => !!v || "O campo mensagem é obrigatório",
