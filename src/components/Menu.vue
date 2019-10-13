@@ -41,7 +41,7 @@
         </v-list-tile>
 
         <v-list-tile
-          v-if="user.teach"
+          v-if="isMonitor"
           @click="veQrCode"
         >
           <v-list-tile-action>
@@ -128,7 +128,16 @@ export default {
     ...mapGetters({
       isLogged: 'get_login',
       user: 'get_profile'
-    })
+    }),
+
+    isMonitor() {
+      if(this.isLogged && this.user.teach) {
+        return true;
+      } else {
+        return false;
+      }
+      
+    }
   },
 }
 </script>

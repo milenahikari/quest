@@ -66,7 +66,7 @@ export default {
 
   watch: {
     searchCity (val) {
-      api.get(`search_city?q=${val}`)
+      api.get(`search_city?q=${val.toUpperCase()}`)
         .then(data => this.cities = data.data.map( item => {
           this.id_city = item.id_city;    
           return ({
