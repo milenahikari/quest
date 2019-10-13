@@ -43,6 +43,7 @@
 
 <script>
 import api from '../../services/api';
+import { mapActions } from 'vuex';
 
 import Courses from '../Courses.vue';
 
@@ -59,14 +60,20 @@ export default {
   },
   
   mounted() {
-
+    this.setMonitors(false);
+    
     api.get(`monitors/${this.idMonitor}`)
       .then(response => 
         this.monitor = response.data.monitor[0]
       )
-      .catch(err => console.log(err))
-    
+      .catch(err => console.log(err))    
   },
+
+  methods: {
+    ...mapActions({
+      setMonitors: 'set_monitors'
+    }),
+  }
 
 }
 </script>

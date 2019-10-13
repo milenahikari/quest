@@ -55,14 +55,24 @@ export default {
       this.$refs.slick.reSlick();
     },
 
-    idCategory(id) {
+    async idCategory(id) {
       this.clicado = true;
       this.itemClicado = id;
       this.setId(id);
+
+      try {
+        const response = await api.get(`monitors/category/${id}`);
+
+        this.setMonitors(response.data);
+
+      } catch(e) {
+        console.log(e);
+      }
     },
 
     ...mapActions({
-      setId: 'set_category'
+      setId: 'set_category',
+      setMonitors: 'set_monitors'
     })
   },
   watch: {

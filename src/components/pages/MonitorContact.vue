@@ -19,13 +19,24 @@
               <v-textarea
                 v-model= "mensagem"
                 label="Escreva a mensagem:"
-                :rules="fiedsRequired"
+                :rules="mensagemRules"
                 outline
                 required
               ></v-textarea>
 
               <v-layout align-center justify-center column wrapper-button>
-                <v-btn @click="enviarEmail" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Enviar</v-btn>
+                <v-btn @click="enviarEmail" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">
+                  <v-progress-circular
+                    v-if="progress"
+                    width="3"
+                    size="20"
+                    color="white"
+                    indeterminate
+                  ></v-progress-circular>
+                  <span
+                    v-else
+                  >Enviar</span>
+                </v-btn>
               </v-layout>
 
               <v-layout align-center justify-center column mt-3>
@@ -46,14 +57,18 @@
       </v-form>
 
     </v-layout>
+
     <v-alert
-      color="#199854"
-      :value="emailSuccess"
-      type="success"
+      v-if="timeAlert"
+      :color="colorAlert"
+      :value="valueAlert"
+      :type="statusAlert"
     >
-      E-mail enviado com sucesso!
+      {{messageAlert}}
     </v-alert>
+
   </v-container>
+
 </template>
 
 <script>
@@ -64,11 +79,17 @@ export default {
   data() {
     return {
       mensagem: '',
-      emailSuccess: false,
-      valid: false,
-      fiedsRequired: [ 
-        v => !!v || "O campo mensagem é obrigatório",
+      mensagemRules: [
+        v => !!v || 'O campo mensagem é obrigatório',        
       ],
+      
+      messageAlert: '',
+      colorAlert: '',
+      statusAlert: '',
+      valueAlert: false,
+      timeAlert: false,
+      progress: false,
+      valid: false
     }
   },
 
@@ -77,7 +98,7 @@ export default {
       this.$refs.form.reset()
     },
 
-    enviarEmail() {
+    async enviarEmail() {
       const dadosEmail = {
         'user': {
           'name': this.user.name,
@@ -90,8 +111,46 @@ export default {
         'mensagem': this.mensagem
       }
 
-      api.post('/monitors/email', dadosEmail)
-        .then( res => console.log(res.data))
+      if(this.mensagem) {
+        try{
+          this.progress = true;
+          const response = await api.post('/monitors/email', dadosEmail);
+
+          this.timeAlert = true;
+          this.colorAlert = '#199854'
+          this.messageAlert = "Sucesso ao enviar a menssagem!";
+          this.statusAlert = 'success';
+          this.valueAlert = true;
+
+          await setTimeout(()=>{
+            this.progress = false;
+            this.timeAlert = false;
+            console.log(this.timeAlert);
+          },3000);
+
+          await setTimeout(()=>{
+            this.$router.push('/');
+          }, 1000);
+
+        } catch(e){
+          this.timeAlert = true;
+          this.colorAlert = '#FB8C00'
+          this.messageAlert = "Falha ao enviar a menssagem! Tente novamente mais tarde";
+          this.statusAlert = 'warning';
+          this.valueAlert = true;
+
+          await setTimeout(()=>{
+            this.progress = false;
+            this.timeAlert = false;
+            console.log(e);
+          },8000);
+
+          await setTimeout(()=>{
+            this.$router.push('/');
+          }, 2000);
+
+        }
+      }
     }
   },
 
