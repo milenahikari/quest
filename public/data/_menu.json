@@ -2,17 +2,17 @@
   {
     "name": "Meu perfil",
     "icon": "fas fa-user-edit",
-    "to": "/profile"
+    "to": "profile"
   },
   {
     "name": "Minhas matérias",
     "icon": "fas fa-chalkboard-teacher",
-    "to": "/my-courses"
+    "to": "my-courses"
   },
   {
     "name": "Medalhas",
     "icon": "fas fa-medal",
-    "to": "/medals"
+    "to": "medals"
   },
   {
     "name": "QR Code",
@@ -22,7 +22,7 @@
   {
     "name": "Avaliar aula",
     "icon": "fas fa-star",
-    "to": ""
+    "to": "evaluation"
   },
   {
     "name": "Sair",

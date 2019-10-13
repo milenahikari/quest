@@ -14,6 +14,7 @@ import About from './components/pages/About.vue';
 import Values from './components/pages/Values.vue';
 import Medals from './components/pages/Medals.vue';
 import Monitor from './components/pages/Monitor.vue';
+import Evaluation from './components/pages/Evaluation.vue';
 import MonitorContact from './components/pages/MonitorContact.vue';
 import Alert from './components/pages/Alert.vue';
 import Teste2 from './components/pages/Teste2.vue';
@@ -107,6 +108,11 @@ const routers = new VueRouter({
       path: '/alert',
       name: 'alert',
       component: Alert
+    },
+    {
+      path: '/evaluation',
+      name: 'evaluation',
+      component: Evaluation
     }
   ]
 });
