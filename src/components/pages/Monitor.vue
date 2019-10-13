@@ -77,14 +77,3 @@ export default {
 
 }
 </script>
-
-<style scoped>
-.q-title {
-  font-size: 12px;
-  margin-top: 5px;
-}
-.q-description {
-  font-size: 12px;
-  font-weight: bold;
-}
-</style>

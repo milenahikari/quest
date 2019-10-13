@@ -114,6 +114,7 @@ export default {
       if(this.mensagem) {
         try{
           this.progress = true;
+          
           const response = await api.post('/monitors/email', dadosEmail);
 
           this.timeAlert = true;

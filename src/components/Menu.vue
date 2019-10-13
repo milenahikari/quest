@@ -41,6 +41,20 @@
         </v-list-tile>
 
         <v-list-tile
+          v-if="user.teach"
+          @click="veQrCode"
+        >
+          <v-list-tile-action>
+            <v-icon>fas fa-qrcode</v-icon>
+          </v-list-tile-action>
+
+          <v-list-tile-content>
+            <v-list-tile-title>Meu QR Code</v-list-tile-title>
+          </v-list-tile-content>
+          
+        </v-list-tile>
+
+        <v-list-tile
           @click="logOut"
         >
           <v-list-tile-action>
@@ -66,7 +80,7 @@ export default {
   data() {
     return {
       drawer: false,
-      items: [],
+      items: []
     }
   },
 
@@ -96,18 +110,24 @@ export default {
 
       //Fecha menu lateral
       this.drawer = false
+    },
+
+    veQrCode() {
+      this.$router.push('/qr-code')
+      this.drawer = false
     }
 
   },
 
   mounted() {
     api.get('/menus')
-      .then(res => this.items = res.data)
+      .then(res => this.items = res.data)    
   },
 
   computed: {
     ...mapGetters({
-      isLogged: 'get_login'
+      isLogged: 'get_login',
+      user: 'get_profile'
     })
   },
 }

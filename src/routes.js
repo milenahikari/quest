@@ -15,6 +15,7 @@ import Values from './components/pages/Values.vue';
 import Medals from './components/pages/Medals.vue';
 import Monitor from './components/pages/Monitor.vue';
 import Evaluation from './components/pages/Evaluation.vue';
+import QrCode from './components/pages/QrCode.vue';
 import MonitorContact from './components/pages/MonitorContact.vue';
 import Alert from './components/pages/Alert.vue';
 import Teste2 from './components/pages/Teste2.vue';
@@ -113,6 +114,11 @@ const routers = new VueRouter({
       path: '/evaluation',
       name: 'evaluation',
       component: Evaluation
+    },
+    {
+      path: '/qr-code',
+      name: 'qr-code',
+      component: QrCode
     }
   ]
 });

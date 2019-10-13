@@ -97,3 +97,18 @@ h2 {
   background: #199854 !important;
   color: white !important;
 }
+.q-left {
+  display:flex;
+  justify-content: flex-end;
+}
+.q-text-center {
+  text-align: center;
+}
+.q-title {
+  font-size: 12px;
+  margin-top: 5px;
+}
+.q-description {
+  font-size: 12px;
+  font-weight: bold;
+}

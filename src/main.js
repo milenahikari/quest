@@ -3,6 +3,8 @@ import Vue from 'vue';
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 
+import VueQRCodeComponent from 'vue-qrcode-component';
+
 import '@fortawesome/fontawesome-free/css/all.css'
 
 import App from './App.vue';
@@ -18,6 +20,8 @@ Vue.config.productionTip = false;
 Vue.use(Vuetify, {
   iconfont: 'fa'
 });
+
+Vue.component('qr-code', VueQRCodeComponent);
 
 new Vue({
   render: h => h(App),
