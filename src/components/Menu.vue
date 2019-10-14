@@ -131,6 +131,8 @@ export default {
     }),
 
     isMonitor() {
+      console.log(this.isLogged)
+      console.log(this.user.teach)
       if(this.isLogged && this.user.teach) {
         return true;
       } else {
