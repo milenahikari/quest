@@ -41,7 +41,6 @@
         </v-list-tile>
 
         <v-list-tile
-          v-if="isMonitor"
           @click="veQrCode"
         >
           <v-list-tile-action>
@@ -130,15 +129,15 @@ export default {
       user: 'get_profile'
     }),
 
-    isMonitor() {
-      console.log(this.user.teach)
-      if(this.isLogged) {
-        return true;
-      } else {
-        return false;
-      }
+    // isMonitor() {
+    //   console.log(this.user.teach)
+    //   // if(this.isLogged) {
+    //   //   return true;
+    //   // } else {
+    //   //   return false;
+    //   // }
       
-    }
+    // }
   },
 }
 </script>
