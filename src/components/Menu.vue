@@ -42,6 +42,7 @@
 
         <v-list-tile
           @click="veQrCode"
+          v-if="isMonitor"
         >
           <v-list-tile-action>
             <v-icon>fas fa-qrcode</v-icon>
@@ -80,12 +81,16 @@ export default {
     return {
       drawer: false,
       items: [],
+      isMonitor: false,
     }
   },
 
   methods: {
     hide() {
       this.drawer = !this.drawer;
+      if(this.isLogged) {
+        if(this.user.teach) this.isMonitor = true;
+      }
     }, 
 
     toRouter(url) {
