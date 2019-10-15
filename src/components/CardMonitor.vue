@@ -73,7 +73,7 @@ export default {
         'phone': this.phone,
         'share': this.share
       };
-
+      console.log(monitor);
       this.setMonitor(monitor);
 
       this.$router.push({ name: 'monitor', params: {idMonitor: this.idMonitor}});
