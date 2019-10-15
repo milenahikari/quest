@@ -41,7 +41,6 @@
         </v-list-tile>
 
         <v-list-tile
-          v-if="isMonitor"
           @click="veQrCode"
         >
           <v-list-tile-action>
@@ -81,7 +80,6 @@ export default {
     return {
       drawer: false,
       items: [],
-      isMonitor: false,
     }
   },
 
@@ -130,16 +128,6 @@ export default {
       isLogged: 'get_login',
       user: 'get_profile'
     }),
-
-    isMonitor() {
-      console.log(this.user.teach)
-      if(this.isLogged && this.user.teach) {
-        return true;
-      } else {
-        return false;
-      }
-      
-    }
   },
 }
 </script>
