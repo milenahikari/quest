@@ -18,7 +18,7 @@ import Evaluation from './components/pages/Evaluation.vue';
 import QrCode from './components/pages/QrCode.vue';
 import MonitorContact from './components/pages/MonitorContact.vue';
 import Alert from './components/pages/Alert.vue';
-import Teste2 from './components/pages/Teste2.vue';
+import Teste from './components/pages/Teste.vue';
 
 Vue.use(VueRouter);
 
@@ -29,7 +29,7 @@ const routers = new VueRouter({
     {
       path: '/teste',
       name: 'teste',
-      component: Teste2
+      component: Teste
     },
     {
       path: '/definition',

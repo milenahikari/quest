@@ -16,6 +16,8 @@
             :city="`${monitor.city}`"
             :state="`${monitor.state}`"
             :rating="`${monitor.rating}`"
+            :phone="`${monitor.phone}`"
+            :share="`${monitor.share}`"
           ></CardMonitor>
 
         </div>

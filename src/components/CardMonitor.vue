@@ -47,7 +47,7 @@
 import { mapActions } from 'vuex';
 
 export default {
-  props: ['idMonitor', 'name', 'course', 'email', 'city', 'state', 'rating'],
+  props: ['idMonitor', 'name', 'course', 'email', 'city', 'state', 'rating', 'phone', 'share'],
 
   data() {
     return {
@@ -69,7 +69,9 @@ export default {
         'email': this.email,
         'city': this.city,
         'state': this.state,
-        'rating': this.rating
+        'rating': this.rating,
+        'phone': this.phone,
+        'share': this.share
       };
 
       this.setMonitor(monitor);

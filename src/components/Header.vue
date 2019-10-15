@@ -91,7 +91,7 @@ export default {
             'course': this.searchCourse
           },
         });
-
+        console.log(response.data);
         this.setMonitors(response.data);            
 
       } catch(e) {

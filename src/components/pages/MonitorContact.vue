@@ -39,12 +39,15 @@
                 </v-btn>
               </v-layout>
 
-              <v-layout align-center justify-center column mt-3>
+              <v-layout 
+                v-if="monitor.share"
+                align-center 
+                justify-center 
+                column 
+                mt-3
+              >
                 <span>ou</span>
-
-                <router-link to="/">
-                  <v-icon class="iconWhats">fab fa-whatsapp</v-icon>
-                </router-link>
+                <a :href="`https://api.whatsapp.com/send?phone=55${phone}`"><v-icon class="iconWhats">fab fa-whatsapp</v-icon></a>
 
               </v-layout>
 
@@ -89,7 +92,8 @@ export default {
       valueAlert: false,
       timeAlert: false,
       progress: false,
-      valid: false
+      valid: false,
+      phone: ''
     }
   },
 
@@ -160,6 +164,10 @@ export default {
       monitor: 'get_monitor',
       user: 'get_profile'
     })
+  },
+
+  mounted() {
+    this.phone= this.monitor.phone.replace(/[^0-9]+/g,'');
   },
 }
 </script>
