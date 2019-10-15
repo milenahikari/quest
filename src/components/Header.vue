@@ -1,6 +1,5 @@
 <template>
   <section>
-
     <Menu></Menu>
   
     <v-layout justify-center column mt-4>

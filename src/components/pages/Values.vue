@@ -1,13 +1,12 @@
 <template>
-  <section class="homeBackground">
+  <v-container mx-auto>
     <Menu></Menu>
 
     <div class="white">
-      <v-img :src="require('../../../src/assets/img/nossos-valores.png')" class="logo"/>
+      <v-img :src="require('../../../src/assets/img/nossos-valores.svg')" class="logo"/>
     </div>
 
-    <v-container fluid class="mb-4 box">
-      <v-layout column pa-3>
+    <v-layout column pa-3 class="box">
         <h1>Nossos Valores</h1>
 
         <v-flex align-self-center>
@@ -28,11 +27,10 @@
         <h2>SUPERAÇÃO</h2>
         <p>Percebemos que todos buscam se tornar pessoas melhores e estamos aqui para possibilitar descobrirem ou aumentarem seu potencial.</p>
       </v-layout>
-    </v-container>
 
     <Footer></Footer>
     
-  </section>
+  </v-container>
 </template>
 
 <script>
