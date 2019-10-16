@@ -40,7 +40,7 @@
               </v-layout>
 
               <v-layout 
-                v-if="monitor.share==1"
+                v-if="monitor.share==1 || monitor.share=='true'"
                 align-center 
                 justify-center 
                 column 
