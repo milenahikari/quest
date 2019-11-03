@@ -52,6 +52,7 @@ export default {
       gems: [],
       userMedals: [],
       colors: [],
+      idMonitor: ''
     }
   },
 
@@ -59,7 +60,7 @@ export default {
     Medal,
   },
 
-  mounted() {    
+  async mounted() {    
     api.get('/gems')
       .then(res => {
         this.gems = res.data
@@ -68,7 +69,10 @@ export default {
     api.get('/gems/colors')
       .then(res => this.colors = res.data)
 
-    api.get(`/monitors/gems/${this.getProfile.id}`)
+    await api.get(`/monitors/qrcode/${this.getProfile.id}`)
+      .then(res => this.idMonitor = res.data.id.toString()) 
+    
+    api.get(`/monitors/gems/${this.idMonitor}`)
       .then(res => this.userMedals = res.data)
 
   },
