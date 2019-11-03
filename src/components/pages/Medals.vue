@@ -41,8 +41,8 @@
 </template>
 
 <script>
-import axios from 'axios';
 import api from '../../services/api';
+import { mapGetters } from 'vuex';
 
 import Medal from '../Medal';
 
@@ -50,23 +50,33 @@ export default {
   data() {
     return {
       gems: [],
-      colors: [],
       userMedals: [],
+      colors: [],
     }
   },
+
   components: {
     Medal,
   },
-  mounted() {
-    axios.get('/data/userMedals.json')
-      .then(res => this.userMedals = res.data)
 
+  mounted() {    
     api.get('/gems')
-      .then(res => this.gems = res.data)
+      .then(res => {
+        this.gems = res.data
+      })
     
-    api.get('/levels')
+    api.get('/gems/colors')
       .then(res => this.colors = res.data)
 
+    api.get(`/monitors/gems/${this.getProfile.id}`)
+      .then(res => this.userMedals = res.data)
+
+  },
+
+  computed: {
+    ...mapGetters({
+      getProfile: 'get_profile'
+    })
   },
 }
 </script>
