@@ -43,7 +43,7 @@
 
                   <v-text-field
                     label="Nome"
-                    :value="getProfile.name"
+                    v-model="name"
                     type="text"
                     :rules="fiedsRequired"
                     required
@@ -52,7 +52,7 @@
 
                   <v-text-field
                     label="Email"
-                    :value="getProfile.email"
+                    v-model="email"
                     :rules="emailRules"
                     disabled
                     outline
@@ -60,20 +60,15 @@
 
                   <v-text-field
                     label="Curso"
-                    :value="getProfile.course"
+                    v-model="curso"
                     type="text"
                     :rules="fiedsRequired"
                     required
                     outline
                   ></v-text-field>
 
-                  <v-checkbox
-                    v-model="checkTeach"
-                    label="Desejo contribuir ensinando"
-                  ></v-checkbox>
-
                   <v-layout align-center justify-center column wrapper-button>
-                    <v-btn @click="next" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Salvar</v-btn>
+                    <v-btn @click="saveDados" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Salvar</v-btn>
                   </v-layout>
                 </v-flex>         
               </v-layout>
@@ -161,6 +156,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import api from '../../services/api';
 
 export default {
   data() {
@@ -170,7 +166,6 @@ export default {
       fiedsRequired: [ 
         v => !!v || "E-mail is required",
       ],
-      checkTeach: true,
       checkShare: true,
       emailRules: [ 
         v => !!v || "E-mail is required",
@@ -183,6 +178,9 @@ export default {
         'Contato',
         'Senha'
       ],
+      name: '',
+      email: '',
+      curso: ''
     }
   }, 
 
@@ -190,8 +188,18 @@ export default {
     clear() {
       this.$refs.form.reset()
     },
+
     next() {
       this.$router.push("/");
+    },
+
+    async saveDados() {
+      // try {
+      //   const response = await api.put();
+
+      // } catch(e) {
+      //   console.log();
+      // }
     }
   },
 
@@ -199,6 +207,15 @@ export default {
     ...mapGetters({
       getProfile: 'get_profile'
     })
+  },
+
+  async mounted() {
+    const response = await api.get(`/user/${this.getProfile.id}`);
+
+    this.name = response.data[0].name;
+    this.email = response.data[0].email;
+    this.curso = response.data[0].course;
+    
   },
 }
 </script>

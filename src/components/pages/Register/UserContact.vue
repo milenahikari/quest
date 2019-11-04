@@ -50,7 +50,7 @@
 import api from '../../../services/api';
 import { mapGetters, mapActions } from 'vuex';
 import { saveStorage } from '../../../utils/saveStorage';
-import storeMonitor from '../../../services/storeMonitor/index';
+// import storeMonitor from '../../../services/storeMonitor/index';
 import { mask } from 'vue-the-mask';
 
 export default {
@@ -90,8 +90,6 @@ export default {
 
           const profile = response.data.success.profile;
 
-          this.setProfile(profile)
-
           const id_user = profile.id;
           
           const monitor = {
@@ -99,7 +97,8 @@ export default {
             ...contact
           }
           
-          storeMonitor(monitor);
+          const responseMonitor = await api.post('/register/monitor', monitor);
+          this.setProfile(responseMonitor.data.success.profile)
           this.$router.push('/subject');     
 
         } catch {

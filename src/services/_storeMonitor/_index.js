@@ -8,7 +8,7 @@ export default async function storeMonitor(monitor) {
     saveStorageMonitor(responseMonitor.data.success);
 
   } catch {
-    
+
     alert("Erro ao salvar o monitor, tente mais tarde");
 
   }

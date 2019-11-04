@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import api from '../../services/api';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -36,8 +35,7 @@ export default {
   },
   
   mounted() {
-    api.get(`/monitors/qrcode/${this.getProfile.id}`)
-      .then(res => this.idMonitor = res.data.id.toString())
+    this.idMonitor = this.getProfile.id_monitor.toString();
   },
  
   computed: {

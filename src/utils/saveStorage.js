@@ -5,6 +5,6 @@ export function saveStorage(user) {
   api.defaults.headers.Authorization = `Bearer ${user.token}`
 }
 
-export function saveStorageMonitor(monitor) {
-  localStorage.setItem('monitor', JSON.stringify(monitor));
-}
+// export function saveStorageMonitor(monitor) {
+//   localStorage.setItem('monitor', JSON.stringify(monitor));
+// }

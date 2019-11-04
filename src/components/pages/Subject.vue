@@ -104,7 +104,7 @@ export default {
 
         try {
 
-          const { id_monitor } = JSON.parse(localStorage.getItem('monitor'));
+          const id_monitor  = this.monitor.id_monitor;
           const id_category = this.id_category;
 
           const response = await api.post('course',
@@ -123,7 +123,8 @@ export default {
   computed: {
     ...mapGetters({
       id_category: 'get_category',
-      isLogged: 'get_login'
+      isLogged: 'get_login',
+      monitor: 'get_profile'
     })
   },
 }

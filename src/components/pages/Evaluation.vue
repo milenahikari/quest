@@ -132,6 +132,15 @@ export default {
     async onDecode (idMonitor) {
 
       if(!Number.isInteger(Number(idMonitor))) return;
+
+      if(this.profile.id_monitor == idMonitor){
+        this.timeAlert = true;
+        this.colorAlert = '#FB8C00'
+        this.messageAlert = "Não é permitido avaliar seu próprio usuário!";
+        this.statusAlert = 'warning';
+        this.valueAlert = true;
+        return;
+      }
       
       try {
 
@@ -166,7 +175,7 @@ export default {
 
     async submit() {
       const dados = {
-        'id_user': this.user.id,
+        'id_user': this.profile.id,
         'id_monitor': this.monitor.id,
         'rating': this.rating
       };
@@ -215,7 +224,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      user: 'get_profile'
+      profile: 'get_profile'
     })
   },
   
