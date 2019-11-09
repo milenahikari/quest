@@ -101,14 +101,14 @@ export default {
       setLogin: 'set_login'
     }),
 
-    logOut() {
+    async logOut() {
       //Limpa o state
-      this.setLogin(false)
+      await this.setLogin(false)
 
       //Limpa o Local Storage
-      localStorage.removeItem('monitor')
-      localStorage.removeItem('user')
-      localStorage.removeItem('vuex')
+      await localStorage.removeItem('monitor')
+      await localStorage.removeItem('user')
+      await localStorage.removeItem('vuex')
 
       this.$router.push('/')
 

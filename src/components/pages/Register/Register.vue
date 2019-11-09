@@ -64,11 +64,21 @@
       </v-container>
     </v-form>
 
+    <v-alert
+      v-if="timeAlert"
+      :color="colorAlert"
+      :value="valueAlert"
+      :type="statusAlert"
+    >
+      {{messageAlert}}
+    </v-alert>
+
   </v-container>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
+import api from '../../../services/api';
 
 export default {
   data() {
@@ -84,7 +94,7 @@ export default {
       
       emailRules: [ 
         v => !!v || "E-mail é obrigatório",
-        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail inválido'
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Preencha um e-mail válido'
       ],
       
       passwordRules: [
@@ -93,6 +103,12 @@ export default {
       fiedsRequired: [ 
         v => !!v || "Nome é obrigatório",
       ],
+
+      messageAlert: '',
+      colorAlert: '',
+      statusAlert: '',
+      valueAlert: false,
+      timeAlert: false,
     }
   }, 
   methods: {
@@ -104,7 +120,24 @@ export default {
       setRegister: 'set_register'
     }),
     
-    next() {
+    async next() {
+
+      const email = await api.get(`/user/email/${this.user.email}`);
+
+      if(email.data.registered) {
+        this.timeAlert = true;
+        this.colorAlert = '#FB8C00'
+        this.messageAlert = "Já existe um cadastro com esse e-mail!";
+        this.statusAlert = 'warning';
+        this.valueAlert = true;
+
+        await setTimeout(()=>{
+          this.progress = false;
+          this.timeAlert = false;
+          console.log(e);
+        },8000);
+        return;
+      }
 
       if(this.$refs.form.validate()) {
 

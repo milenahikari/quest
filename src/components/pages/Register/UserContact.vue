@@ -43,6 +43,15 @@
       </v-container>
     </v-form>
 
+    <v-alert
+      v-if="timeAlert"
+      :color="colorAlert"
+      :value="valueAlert"
+      :type="statusAlert"
+    >
+      {{messageAlert}}
+    </v-alert>
+
   </v-container>
 </template>
 
@@ -69,6 +78,12 @@ export default {
       fiedsRequired: [ 
         v => !!v || "Preencha o campo celular",
       ],
+
+      messageAlert: '',
+      colorAlert: '',
+      statusAlert: '',
+      valueAlert: false,
+      timeAlert: false,
     }
   }, 
   methods: {
@@ -102,7 +117,19 @@ export default {
           this.$router.push('/subject');     
 
         } catch {
-          alert("Erro: arruma ai");
+          console.log(e);
+
+          this.timeAlert = true;
+          this.colorAlert = '#FB8C00'
+          this.messageAlert = "Falha ao realizar login!";
+          this.statusAlert = 'warning';
+          this.valueAlert = true;
+
+          await setTimeout(()=>{
+            this.progress = false;
+            this.timeAlert = false;
+            console.log(e);
+          },2000);
         }
     
       }

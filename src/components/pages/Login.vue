@@ -62,6 +62,15 @@
       </v-container>
     </v-form>
 
+    <v-alert
+      v-if="timeAlert"
+      :color="colorAlert"
+      :value="valueAlert"
+      :type="statusAlert"
+    >
+      {{messageAlert}}
+    </v-alert>
+
   </v-container>
 </template>
 
@@ -86,6 +95,12 @@ export default {
       passwordRules: [
         v => !!v || 'Senha é obrigatório',        
       ],
+
+      messageAlert: '',
+      colorAlert: '',
+      statusAlert: '',
+      valueAlert: false,
+      timeAlert: false,
     }
   }, 
   methods: {
@@ -109,8 +124,19 @@ export default {
           await this.$router.push('/');
 
         } catch(e) {
-          alert("Erro: arruma ai");
           console.log(e);
+
+          this.timeAlert = true;
+          this.colorAlert = '#FB8C00'
+          this.messageAlert = "E-mail ou senha inválida!";
+          this.statusAlert = 'warning';
+          this.valueAlert = true;
+
+          await setTimeout(()=>{
+            this.progress = false;
+            this.timeAlert = false;
+            console.log(e);
+          },2000);
         }
       }
     },

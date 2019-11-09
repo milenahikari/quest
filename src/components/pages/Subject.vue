@@ -39,7 +39,7 @@
               v-model= "course.title"
               label="Defina um título"
               type="text"
-              :rules="fiedsRequired"
+              :rules="titleRequired"
               required
               outline
             ></v-text-field>
@@ -47,7 +47,7 @@
             <v-textarea
               v-model= "course.description"
               label="Descreva o curso:"
-              :rules="fiedsRequired"
+              :rules="descriptionRequired"
               outline
               required
             ></v-textarea>
@@ -59,6 +59,15 @@
         </v-layout>
       </v-container>
     </v-form>
+
+    <v-alert
+      v-if="timeAlert"
+      :color="colorAlert"
+      :value="valueAlert"
+      :type="statusAlert"
+    >
+      {{messageAlert}}
+    </v-alert>
 
   </v-container>
 </template>
@@ -75,14 +84,23 @@ export default {
       valid: false,
       show: false,
       e1: false,
-      fiedsRequired: [ 
-        v => !!v || "E-mail is required",
+      titleRequired: [ 
+        v => !!v || "Título é obrigatório",
+      ],
+      descriptionRequired: [ 
+        v => !!v || "Descrição é obrigatória",
       ],
       course: {
         id_category: '',
         title: '',
         description: ''
-      }
+      },
+
+      messageAlert: '',
+      colorAlert: '',
+      statusAlert: '',
+      valueAlert: false,
+      timeAlert: false,
     }
   },
   components: {
@@ -113,8 +131,19 @@ export default {
           this.$router.push('/');
 
         } catch(e) {
-          alert("Erro: arruma ai");
+          console.log(e);
+
+          this.timeAlert = true;
+          this.colorAlert = '#FB8C00'
+          this.messageAlert = "Falha ao cadastrar a matéria!";
+          this.statusAlert = 'warning';
+          this.valueAlert = true;
+
+          await setTimeout(()=>{
+            this.progress = false;
+            this.timeAlert = false;
             console.log(e);
+          },2000);
         }
       
       }
