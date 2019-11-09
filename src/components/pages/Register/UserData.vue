@@ -127,14 +127,7 @@ export default {
           this.$router.push('/user-contact');
 
         } else {
-
           
-          // const data = {
-          //   ...this.getRegister,
-          //   id_city,
-          //   course, 
-          //   teach
-          // }
           const { name, email, password, c_password, photo } = this.getRegister;
           form.append('name', name);
           form.append('email', email);

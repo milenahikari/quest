@@ -54,7 +54,7 @@
             ></v-text-field>
 
             <v-layout align-center justify-center column wrapper-button>
-              <v-btn @click="next" class="q-button mt-5" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
+              <v-btn @click="next" class="q-button mt-2" :class=" { 'btnGreen' : valid, disabled: !valid }">Avançar</v-btn>
             </v-layout>
           </v-flex>         
         </v-layout>

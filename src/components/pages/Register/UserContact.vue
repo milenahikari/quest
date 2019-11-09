@@ -95,7 +95,17 @@ export default {
         const contact = this.user;
 
         try {
-          const response = await api.post('/register', this.getRegister);
+          const { name, email, password, c_password, photo } = this.getRegister;
+          form.append('name', name);
+          form.append('email', email);
+          form.append('password', password);
+          form.append('c_password', c_password);
+          form.append('photo', photo);
+          form.append('id_city', id_city);
+          form.append('course', course);
+          form.append('teach', teach);
+
+          const response = await api.post('/register', form);
 
           saveStorage(response.data.success);
 
