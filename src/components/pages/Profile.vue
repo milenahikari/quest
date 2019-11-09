@@ -72,7 +72,7 @@
                   </v-layout>
                 </v-flex>         
               </v-layout>
-          </v-form>
+            </v-form>
           </v-tab-item>
 
           <v-tab-item>
@@ -120,7 +120,7 @@
                 </v-flex>         
               </v-layout>
 
-          </v-form>
+            </v-form>
           </v-tab-item>
 
           <v-tab-item>

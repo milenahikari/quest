@@ -11,12 +11,9 @@
       <v-container fluid>
         <v-layout justify-center wrap>
           <v-flex d-flex shrink>
-            <v-avatar
-              size="100px"
-              color="grey lighten-4"
-            >
-              <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
-            </v-avatar>
+            
+            <Upload @addFile="uploadFile"></Upload>
+          
           </v-flex>
         </v-layout>
         <v-layout justify-center mb-4>
@@ -79,14 +76,20 @@
 <script>
 import { mapActions } from 'vuex';
 import api from '../../../services/api';
+import Upload from '../../Upload';
 
 export default {
+  components: {
+    Upload
+  },
+  
   data() {
     return {
       user: {
         name: '',
         email: '',
         password: '',
+        file: '',
       },
 
       valid: false,
@@ -145,15 +148,17 @@ export default {
           name: this.user.name,
           email: this.user.email,
           password: this.user.password,
-          c_password: this.user.password
+          c_password: this.user.password,
+          photo: this.user.file
         });
 
         this.$router.push("/user-data");
       } 
+    },
+
+    uploadFile(img){
+      this.user.file = img;
     }
-  },
+  },  
 }
 </script>
-
-<style scoped>
-</style>

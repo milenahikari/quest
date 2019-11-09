@@ -108,6 +108,7 @@ export default {
     }),
 
     async next() {
+      const form = new FormData();
 
       const { id_city, course, teach } = this.profile;
 
@@ -127,15 +128,25 @@ export default {
 
         } else {
 
-          const data = {
-            ...this.getRegister,
-            id_city,
-            course, 
-            teach
-          }
+          
+          // const data = {
+          //   ...this.getRegister,
+          //   id_city,
+          //   course, 
+          //   teach
+          // }
+          const { name, email, password, c_password, photo } = this.getRegister;
+          form.append('name', name);
+          form.append('email', email);
+          form.append('password', password);
+          form.append('c_password', c_password);
+          form.append('photo', photo);
+          form.append('id_city', id_city);
+          form.append('course', course);
+          form.append('teach', teach);
 
           try {
-            const response = await api.post('register', data);
+            const response = await api.post('register', form);
 
             saveStorage(response.data.success);
 
