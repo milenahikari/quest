@@ -97,7 +97,7 @@ export default {
         const contact = this.user;
 
         try {
-          const { name, email, password, c_password, photo } = this.getRegister;
+          const { name, email, password, c_password, photo, id_city, course, teach } = this.getRegister;
           form.append('name', name);
           form.append('email', email);
           form.append('password', password);
