@@ -91,6 +91,8 @@ export default {
       this.$refs.form.reset()
     },
     async submit() {
+      const form = new FormData();
+      
       if(this.$refs.form.validate()) {
         const contact = this.user;
 
