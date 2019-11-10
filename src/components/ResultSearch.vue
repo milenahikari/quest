@@ -2,6 +2,11 @@
   <v-container grid-list-xl>
     <v-layout>
       <v-flex>
+        <div v-if="monitors.length = 0" class="box-not-found">
+          <h2>Não encontramos nenhum resultado...</h2>
+          <v-img :src="require('../../src/assets/img/not-found.svg')" class="img-not-found"/>
+        </div>  
+
         <div v-if="monitors.length > 0">
           <h2>Resultados encontrados...</h2>
 
@@ -25,10 +30,9 @@
           </div>
         </div>
 
-        <div v-else class="box-not-found">
-          <h2>Não encontramos nenhum resultado...</h2>
-          <v-img :src="require('../../src/assets/img/not-found.svg')" class="img-not-found"/>
-        </div>
+        <div>
+          oi
+        </div>   
 
       </v-flex>
 
