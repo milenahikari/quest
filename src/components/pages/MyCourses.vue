@@ -47,7 +47,7 @@ export default {
   },
 
   mounted() {
-    api.get(`monitors/${this.getProfile.id}`)
+    api.get(`monitors/${this.getProfile.id_monitor}`)
       .then(response => 
         this.monitor = response.data.monitor[0]
       )
