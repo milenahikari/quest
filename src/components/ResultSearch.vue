@@ -18,6 +18,7 @@
             :rating="`${monitor.rating}`"
             :phone="`${monitor.phone}`"
             :share="`${monitor.share}`"
+            :photo="`${monitor.photo}`"
           ></CardMonitor>
 
         </div>

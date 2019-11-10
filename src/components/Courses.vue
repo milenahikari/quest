@@ -26,8 +26,8 @@
           <v-layout align-center justify-space-between row>
             <span class="title-course mt-3">{{item.title}}</span>
             <div v-if="showButton == 'yes'">
-              <button class="btn-icon" @click="deleteCourse"><v-icon class="icon-course">fas fa-trash</v-icon></button>
-              <button class="btn-icon" @click="modifyCourse"><v-icon class="icon-course">fas fa-pencil-alt</v-icon></button>
+              <button class="btn-icon" @click="dialog=true, idDelete=item.id"><v-icon class="icon-course">fas fa-trash</v-icon></button>
+              <button class="btn-icon" @click="modifyCourse(item.id)"><v-icon class="icon-course">fas fa-pencil-alt</v-icon></button>
             </div>
           </v-layout>
           <v-layout>
@@ -64,7 +64,7 @@
             <v-btn
               color="green darken-1"
               flat="flat"
-              @click="dialog = false"
+              @click="deleteConfirm(idDelete, idMonitor)"
             >
               Sim
             </v-btn>
@@ -79,11 +79,13 @@
 import api from '../services/api';
 
 export default {
-  props: ['txtButton', 'showButton', 'router', 'idMonitor'],
+  props: ['txtButton', 'showButton', 'router', 'idMonitor', 'idCourse'],
   data() {
     return {
-      courses: {},
-      dialog: false
+      courses: '',
+      dialog: false,
+      idDelete:'',
+      idCourse:'',
     }
   },
   mounted() {
@@ -94,12 +96,23 @@ export default {
 
   },
   methods: {
-    deleteCourse() {
-      this.dialog = true
+    async deleteConfirm(idDelete, idMonitor) {
+      console.log(idDelete);
+      try {
+        
+        const response = await api.post(`/course/${this.idDelete}`);
+        this.dialog = false;
+        this.$router.go('/my-courses');
+
+      } catch(e) {
+        console.log('erro');
+      }
     },
-    modifyCourse() {
-      alert("Deseja alterar essa matéria?");
+
+    modifyCourse(idCourse) {
+      this.$router.push(`/edit-course/${idCourse}`);
     },
+    
     btnRouter(router) {
       this.$router.push(router);
     }

@@ -23,7 +23,7 @@
         size="100px"
         color="grey lighten-4"
       >
-        <v-icon>fas fa-user-plus</v-icon>
+        <v-img :src="`${monitor.photo}`"></v-img>
 
       </v-avatar>
 

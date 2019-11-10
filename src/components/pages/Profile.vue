@@ -10,12 +10,12 @@
               size="110px"
               color="grey lighten-4"
             >
-              <v-icon>fas fa-user-plus</v-icon>
+              <v-img :src="`${photo}`"></v-img>
             </v-avatar>
           </v-flex>
         </v-layout>
 
-        <v-layout justify-center>
+        <v-layout justify-center mt-3>
           <h2>Meu Perfil</h2>
         </v-layout>
 
@@ -45,7 +45,7 @@
                     label="Nome"
                     v-model="name"
                     type="text"
-                    :rules="fiedsRequired"
+                    :rules="nameRequired"
                     required
                     outline
                   ></v-text-field>
@@ -53,7 +53,6 @@
                   <v-text-field
                     label="Email"
                     v-model="email"
-                    :rules="emailRules"
                     disabled
                     outline
                   ></v-text-field>
@@ -62,7 +61,7 @@
                     label="Curso"
                     v-model="course"
                     type="text"
-                    :rules="fiedsRequired"
+                    :rules="courseRequired"
                     required
                     outline
                   ></v-text-field>
@@ -86,6 +85,7 @@
                     :items="cities"
                     :search-input.sync="search"
                     :placeholder="locationUser"
+                    :rules="locationRequired"
                     hide-no-data
                     hide-selected
                     label="Cidade"
@@ -101,7 +101,7 @@
                   <v-text-field
                     label="Celular"
                     v-model="phone"
-                    :rules="fiedsRequired"
+                    :rules="phoneRequired"
                     v-mask="mask"
                     required
                     outline
@@ -109,7 +109,7 @@
                   ></v-text-field>
 
                   <v-checkbox
-                    v-model="checkShare"
+                    v-model="share_phone"
                     label="Compartilhar número de WhatsApp"
                     v-if="getProfile.teach==true || getProfile.teach==1"
                   ></v-checkbox>
@@ -169,11 +169,18 @@
                   </v-layout>
                 </v-flex>         
               </v-layout>
-          </v-form>
-        </v-tab-item>
-      </v-tabs-items>    
+            </v-form>
+          </v-tab-item>
         </v-tabs-items>    
-      </v-tabs-items>    
+
+        <v-alert
+          v-if="timeAlert"
+          :color="colorAlert"
+          :value="valueAlert"
+          :type="statusAlert"
+        >
+          {{messageAlert}}
+        </v-alert>   
   </v-container>
 </template>
 
@@ -192,14 +199,6 @@ export default {
       e1: false,
       e2: false,
       e3: false,
-      fiedsRequired: [ 
-        v => !!v || "E-mail is required",
-      ],
-      checkShare: true,
-      emailRules: [ 
-        v => !!v || "E-mail is required",
-        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
-      ],
 
       tabs: null,
       menus: [
@@ -213,10 +212,23 @@ export default {
       passwordRules: [
         v => !!v || 'Senha é obrigatório',        
       ],
+      nameRequired: [ 
+        v => !!v || "Nome é obrigatório",
+      ],
+      courseRequired: [ 
+        v => !!v || "Curso é obrigatório",
+      ],
+      locationRequired: [ 
+        v => !!v || "Localização é obrigatória",
+      ],
+      phoneRequired: [ 
+        v => !!v || "Celular é obrigatório",
+      ],
       mask: '(##) #####-####',
       name: '',
       email: '',
       course: '',
+      photo: '',
       city: '',
       state: '',
       phone: '',
@@ -232,6 +244,12 @@ export default {
 
       location: '',
       locationUser: '',
+
+      messageAlert: '',
+      colorAlert: '',
+      statusAlert: '',
+      valueAlert: false,
+      timeAlert: false,
     }
   }, 
 
@@ -253,10 +271,34 @@ export default {
 
         const response = await api.put(`/user/${this.getProfile.id}`, this.dados);
 
-        this.setProfile(response); //não consegui
+        console.log(this.response);
+        this.timeAlert = true;
+        this.colorAlert = '#199854';
+        this.messageAlert = "Dados editados com sucesso!";
+        this.statusAlert = 'success';
+        this.valueAlert = true;
+
+        await setTimeout(()=>{
+          this.progress = false;
+          this.timeAlert = false;
+          console.log(this.timeAlert);
+        },5000);
+
       } catch(e) {
-        console.log();
-      }
+          console.log(e);
+
+          this.timeAlert = true;
+          this.colorAlert = '#FB8C00';
+          this.messageAlert = "Os campos devem ser preenchidos!";
+          this.statusAlert = 'warning';
+          this.valueAlert = true;
+
+          await setTimeout(()=>{
+            this.progress = false;
+            this.timeAlert = false;
+            console.log(e);
+          },2000);
+        }
     },
 
     async saveContact(){
@@ -271,8 +313,32 @@ export default {
 
         const response = await api.put(`userContact/${this.getProfile.id}`, this.dados);
 
-      } catch(e){
-        console.log();
+        this.timeAlert = true;
+        this.colorAlert = '#199854';
+        this.messageAlert = "Dados editados com sucesso!";
+        this.statusAlert = 'success';
+        this.valueAlert = true;
+
+        await setTimeout(()=>{
+          this.progress = false;
+          this.timeAlert = false;
+          console.log(this.timeAlert);
+        },5000);
+
+      } catch(e) {
+        console.log(e);
+
+        this.timeAlert = true;
+        this.colorAlert = '#FB8C00';
+        this.messageAlert = "Os campos devem ser preenchidos!";
+        this.statusAlert = 'warning';
+        this.valueAlert = true;
+
+        await setTimeout(()=>{
+          this.progress = false;
+          this.timeAlert = false;
+          console.log(e);
+        },2000);
       }
     },
 
@@ -286,8 +352,32 @@ export default {
 
         const response = await api.put(`/userPassword/${this.getProfile.id}`, this.dados);
 
+        this.timeAlert = true;
+        this.colorAlert = '#199854';
+        this.messageAlert = "Nova senha com sucesso!";
+        this.statusAlert = 'success';
+        this.valueAlert = true;
+
+        await setTimeout(()=>{
+          this.progress = false;
+          this.timeAlert = false;
+          console.log(this.timeAlert);
+        },5000);
+
       } catch(e) {
-        console.log();
+        console.log(e);
+
+        this.timeAlert = true;
+        this.colorAlert = '#FB8C00';
+        this.messageAlert = "Senha atual e/ou Nova senha incorreta!";
+        this.statusAlert = 'warning';
+        this.valueAlert = true;
+
+        await setTimeout(()=>{
+          this.progress = false;
+          this.timeAlert = false;
+          console.log(e);
+        },2500);
       }
     }
   },
@@ -304,6 +394,7 @@ export default {
     this.name = response.data[0].name;
     this.email = response.data[0].email;
     this.course = response.data[0].course;
+    this.photo = response.data[0].photo;
     this.id_city = response.data[0].id_city;
     this.city = response.data[0].city;
     this.state = response.data[0].state;

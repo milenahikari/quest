@@ -1,31 +1,16 @@
 <template>
   <v-container grid-list-xl>
 
-    <router-link v-if="isLogged" to="/my-courses">
-      <v-icon >fas fa-chevron-left</v-icon>
-    </router-link>
-
-    <router-link v-else to="/user-contact">
+    <router-link to="/my-courses">
       <v-icon >fas fa-chevron-left</v-icon>
     </router-link>
 
     <v-container fluid>
       <v-layout justify-center mb-4>
-        <h2>Cadastre sua matéria</h2>
+        <h2>Edite sua matéria</h2>
       </v-layout>
     </v-container>
-
-    <Carousel></Carousel>
-
-    <v-alert
-      type="warning"
-      border="border-left"
-      color="yellow darken-2"
-      v-model="show"
-      dismissible="true"
-    >
-      Escolha uma das categorias acima
-    </v-alert>
+    
     <v-form 
       ref="form"
       v-model="valid"
@@ -34,9 +19,14 @@
 
         <v-layout justify-center wrap>
           <v-flex>
+            <div class="wrapper-category">
+              <v-icon class="icon-category">{{icon}}</v-icon>
+              <span class="title-category">{{name}}</span>
+            </div>
 
             <v-text-field
-              v-model= "course.title"
+              class="mt-3"
+              v-model= "title"
               label="Defina um título"
               type="text"
               :rules="titleRequired"
@@ -45,7 +35,7 @@
             ></v-text-field>
 
             <v-textarea
-              v-model= "course.description"
+              v-model= "description"
               label="Descreva a matéria:"
               :rules="descriptionRequired"
               outline
@@ -53,7 +43,7 @@
             ></v-textarea>
 
             <v-layout align-center justify-center column wrapper-button>
-              <v-btn @click="submit" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Cadastrar</v-btn>
+              <v-btn @click="saveCourse(idCourse)" class="q-button" :class=" { 'btnGreen' : valid, disabled: !valid }">Salvar</v-btn>
             </v-layout>
           </v-flex>         
         </v-layout>
@@ -79,6 +69,7 @@ import { mapGetters } from 'vuex';
 import Carousel from '../Carousel.vue';
 
 export default {
+  props:['idCourse'],
   data() {
     return {
       valid: false,
@@ -91,7 +82,6 @@ export default {
         v => !!v || "Descrição é obrigatória",
       ],
       course: {
-        id_category: '',
         title: '',
         description: ''
       },
@@ -101,41 +91,59 @@ export default {
       statusAlert: '',
       valueAlert: false,
       timeAlert: false,
+
+      idCourse: '',
+      icon: '',
+      name: '',
+      title: '',
+      description:'',
+
     }
   },
-  components: {
-    Carousel
+
+  async mounted() {
+    const response = await api.get(`/monitors/courses/${this.idCourse}`);
+
+    this.icon = response.data[0].category.icon;
+    this.name = response.data[0].category.name;
+    this.title = response.data[0].category.courses[0].title;
+    this.description = response.data[0].category.courses[0].description;
+
   },
+
   methods: {
     clear () {
       this.$refs.form.reset()
     },
     
-    async submit() {
+    async saveCourse(idCourse) {
+      try {
+        this.dados = [
+            this.title,
+            this.description
+          ]
 
-      if(this.$refs.form.validate()) {
+        const response = await api.put(`/course/${this.idCourse}`, this.dados);
 
-        if(this.id_category == '') {
-          this.show = true;
-          return;
-        }
+        this.timeAlert = true;
+        this.colorAlert = '#199854';
+        this.messageAlert = "Matéria editada com sucesso!";
+        this.statusAlert = 'success';
+        this.valueAlert = true;
 
-        try {
+        await setTimeout(()=>{
+          this.progress = false;
+          this.timeAlert = false;
+          console.log(this.timeAlert);
+        },5000);
+        this.$router.push('/my-courses');
 
-          const id_monitor  = this.monitor.id_monitor;
-          const id_category = this.id_category;
-
-          const response = await api.post('course',
-            {...this.course, id_monitor, id_category});
-
-          this.$router.push('/');
-
-        } catch(e) {
+      } catch(e) {
           console.log(e);
 
           this.timeAlert = true;
-          this.colorAlert = '#FB8C00'
-          this.messageAlert = "Falha ao cadastrar a matéria!";
+          this.colorAlert = '#FB8C00';
+          this.messageAlert = "Os campos devem ser preenchidos!";
           this.statusAlert = 'warning';
           this.valueAlert = true;
 
@@ -145,19 +153,29 @@ export default {
             console.log(e);
           },2000);
         }
-      
+           
       }
-    }
-  },
-  computed: {
-    ...mapGetters({
-      id_category: 'get_category',
-      isLogged: 'get_login',
-      monitor: 'get_profile'
-    })
   },
 }
 </script>
 
 <style scoped>
+  .wrapper-category {
+    background: #F9F9F9;
+    width: 50%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+  }
+  .icon-category {
+    font-size: 20px;
+    color: #5CCC6D;
+    padding: 10px;
+  }
+  .title-category {
+    font-size: 15px;
+    font-weight: bold;
+    color: #313131;
+  }
 </style>

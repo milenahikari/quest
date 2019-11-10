@@ -12,7 +12,7 @@
         <v-layout justify-center wrap>
           <v-flex d-flex shrink>
             
-            <Upload @addFile="uploadFile"></Upload>
+            <UploadImage @addFile="uploadFile"></UploadImage>
           
           </v-flex>
         </v-layout>
@@ -76,11 +76,11 @@
 <script>
 import { mapActions } from 'vuex';
 import api from '../../../services/api';
-import Upload from '../../Upload';
+import UploadImage from '../../UploadImage';
 
 export default {
   components: {
-    Upload
+    UploadImage
   },
   
   data() {

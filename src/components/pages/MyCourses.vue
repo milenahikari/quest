@@ -7,11 +7,11 @@
     <v-layout column>
       <v-layout>
         <v-flex mb-1>
-          <h1 class="mt-3">Marina Joaquina</h1>
+          <h1 class="mt-3">{{monitor.name}}</h1>
           <h4 class="q-title">Curso</h4>
-          <span class="q-description">Medicina</span>
+          <span class="q-description">{{monitor.course}}</span>
           <h4 class="q-title">Cidade</h4>
-          <span class="q-description">Promissão - SP</span>
+          <span class="q-description">{{monitor.city + ' - ' + monitor.state}}</span>
       </v-flex>
       <v-avatar
         size="100px"
@@ -24,7 +24,7 @@
     <v-divider></v-divider>
 
     <v-flex mt-1>
-      <Courses txtButton="Nova matéria" showButton="yes" router="/subject"></Courses>
+      <Courses txtButton="Nova matéria" showButton="yes" router="/subject"  :idMonitor="this.getProfile.id_monitor"></Courses>
     </v-flex>
     </v-layout>
   </v-container>
@@ -32,17 +32,34 @@
 
 <script>
 import api from '../../services/api';
-
+import { mapGetters } from 'vuex';
 import Courses from '../Courses.vue';
 
 export default {
   components: {
     Courses,
   },
+
   data() {
     return {
+      monitor: {},
     }
-  }
+  },
+
+  mounted() {
+    api.get(`monitors/${this.getProfile.id}`)
+      .then(response => 
+        this.monitor = response.data.monitor[0]
+      )
+      .catch(err => console.log(err))    
+  },
+
+  computed: {
+    ...mapGetters({
+      getProfile: 'get_profile'
+    })
+  },
+
 }
 </script>
 

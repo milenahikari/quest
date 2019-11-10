@@ -11,7 +11,7 @@
           color="grey lighten-4"
           class="ma-2"
         >
-          <v-icon>fas fa-user-plus</v-icon>
+          <v-img :src="`${photo}`"></v-img>
         </v-avatar>
         <v-layout>
           <v-flex ml-3 pt-0>
@@ -47,7 +47,7 @@
 import { mapActions } from 'vuex';
 
 export default {
-  props: ['idMonitor', 'name', 'course', 'email', 'city', 'state', 'rating', 'phone', 'share'],
+  props: ['idMonitor', 'name', 'course', 'email', 'city', 'state', 'rating', 'phone', 'share', 'photo'],
 
   data() {
     return {
@@ -71,7 +71,8 @@ export default {
         'state': this.state,
         'rating': this.rating,
         'phone': this.phone,
-        'share': this.share
+        'share': this.share,
+        'photo': this.photo
       };
       console.log(monitor);
       this.setMonitor(monitor);
