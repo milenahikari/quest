@@ -80,20 +80,20 @@
         <qrcode-capture v-if="noStreamApiSupport" @decode="onDecode" />
       </div>
 
+      <v-alert
+        v-if="timeAlert"
+        :color="colorAlert"
+        :value="valueAlert"
+        :type="statusAlert"
+      >
+        {{messageAlert}}
+      </v-alert>
+
       <v-layout justify-center class="q-text-center" mt-3 pa-4>
         <p>Ao final da aula escaneie o QR Code do monitor que pode ser acessado em <span class="font-weight-black">Meu QR Code</span> no menu dele.</p>
       </v-layout>
 
     </v-container>
-
-    <v-alert
-      v-if="timeAlert"
-      :color="colorAlert"
-      :value="valueAlert"
-      :type="statusAlert"
-    >
-      {{messageAlert}}
-    </v-alert>
 
   </v-container>
 
