@@ -37,7 +37,7 @@
 
         <v-tabs-items v-model="tabs">
           <v-tab-item>
-            <v-form ref="form" v-model="valid">
+            <v-form v-model="valid">
               <v-layout justify-center wrap mt-3>
                 <v-flex>
 
@@ -75,7 +75,7 @@
           </v-tab-item>
 
           <v-tab-item>
-            <v-form ref="form" v-model="valid">
+            <v-form v-model="valid">
               <v-layout justify-center wrap mt-3>
                 <v-flex>
 
@@ -124,7 +124,7 @@
           </v-tab-item>
 
           <v-tab-item>
-            <v-form ref="form" v-model="valid">
+            <v-form v-model="valid">
               <v-layout justify-center wrap mt-3>
                 <v-flex>
 
@@ -268,29 +268,28 @@ export default {
     },
 
     async saveDados() {
-      if(this.$refs.form.validate()) {
-        try {
-          this.dados = [
-          this.name,
-          this.course
-          ]
+      try {
+        this.dados = [
+        this.name,
+        this.course
+        ]
 
-          const response = await api.put(`/user/${this.getProfile.id}`, this.dados);
+        const response = await api.put(`/user/${this.getProfile.id}`, this.dados);
 
-          console.log(this.response);
-          this.timeAlert = true;
-          this.colorAlert = '#199854';
-          this.messageAlert = "Dados editados com sucesso!";
-          this.statusAlert = 'success';
-          this.valueAlert = true;
+        console.log(this.response);
+        this.timeAlert = true;
+        this.colorAlert = '#199854';
+        this.messageAlert = "Dados editados com sucesso!";
+        this.statusAlert = 'success';
+        this.valueAlert = true;
 
-          await setTimeout(()=>{
-            this.progress = false;
-            this.timeAlert = false;
-            console.log(this.timeAlert);
-          },5000);
+        await setTimeout(()=>{
+          this.progress = false;
+          this.timeAlert = false;
+          console.log(this.timeAlert);
+        },5000);
 
-        } catch(e) {
+      } catch(e) {
           console.log(e);
 
           this.timeAlert = true;
@@ -305,90 +304,85 @@ export default {
             console.log(e);
           },2000);
         }
-      }
     },
 
     async saveContact(){
-      if(this.$refs.form.validate()) {
-        try{
-          this.dados = [
-          this.getProfile.teach, //[0]
-          this.id_city, //[2]
-          this.getProfile.id_monitor, //[2]
-          this.phone, //[3]
-          this.share_phone //[4]
-          ]
+      try{
+        this.dados = [
+        this.getProfile.teach, //[0]
+        this.id_city, //[2]
+        this.getProfile.id_monitor, //[2]
+        this.phone, //[3]
+        this.share_phone //[4]
+        ]
 
-          const response = await api.put(`userContact/${this.getProfile.id}`, this.dados);
+        const response = await api.put(`userContact/${this.getProfile.id}`, this.dados);
 
-          this.timeAlert = true;
-          this.colorAlert = '#199854';
-          this.messageAlert = "Dados editados com sucesso!";
-          this.statusAlert = 'success';
-          this.valueAlert = true;
+        this.timeAlert = true;
+        this.colorAlert = '#199854';
+        this.messageAlert = "Dados editados com sucesso!";
+        this.statusAlert = 'success';
+        this.valueAlert = true;
 
-          await setTimeout(()=>{
-            this.progress = false;
-            this.timeAlert = false;
-            console.log(this.timeAlert);
-          },5000);
+        await setTimeout(()=>{
+          this.progress = false;
+          this.timeAlert = false;
+          console.log(this.timeAlert);
+        },5000);
 
-        } catch(e) {
+      } catch(e) {
+        console.log(e);
+
+        this.timeAlert = true;
+        this.colorAlert = '#FB8C00';
+        this.messageAlert = "Os campos devem ser preenchidos!";
+        this.statusAlert = 'warning';
+        this.valueAlert = true;
+
+        await setTimeout(()=>{
+          this.progress = false;
+          this.timeAlert = false;
           console.log(e);
-
-          this.timeAlert = true;
-          this.colorAlert = '#FB8C00';
-          this.messageAlert = "Os campos devem ser preenchidos!";
-          this.statusAlert = 'warning';
-          this.valueAlert = true;
-
-          await setTimeout(()=>{
-            this.progress = false;
-            this.timeAlert = false;
-            console.log(e);
-          },2000);
-        }
+        },2000);
       }
     },
 
     async savePassword(){
-      if(this.$refs.form.validate()) {
-        try{
-          this.dados = [
-          this.password,
-          this.password1,
-          this.password2
-          ]
+      try{
+        this.dados = [
+        this.password,
+        this.password1,
+        this.password2
+        ]
 
-          const response = await api.put(`/userPassword/${this.getProfile.id}`, this.dados);
+        const response = await api.put(`/userPassword/${this.getProfile.id}`, this.dados);
 
-          this.timeAlert = true;
-          this.colorAlert = '#199854';
-          this.messageAlert = "Nova senha com sucesso!";
-          this.statusAlert = 'success';
-          this.valueAlert = true;
+        this.timeAlert = true;
+        this.colorAlert = '#199854';
+        this.messageAlert = "Nova senha com sucesso!";
+        this.statusAlert = 'success';
+        this.valueAlert = true;
 
-          await setTimeout(()=>{
-            this.progress = false;
-            this.timeAlert = false;
-            console.log(this.timeAlert);
-          },5000);
+        await setTimeout(()=>{
+          this.progress = false;
+          this.timeAlert = false;
+          console.log(this.timeAlert);
+        },5000);
 
-        } catch(e) {
+      } catch(e) {
+        console.log(e);
+
+        this.timeAlert = true;
+        this.colorAlert = '#FB8C00';
+        this.messageAlert = "Senha atual e/ou Nova senha incorreta!";
+        this.statusAlert = 'warning';
+        this.valueAlert = true;
+
+        await setTimeout(()=>{
+          this.progress = false;
+          this.timeAlert = false;
           console.log(e);
-
-          this.timeAlert = true;
-          this.colorAlert = '#FB8C00';
-          this.messageAlert = "Senha atual e/ou Nova senha incorreta!";
-          this.statusAlert = 'warning';
-          this.valueAlert = true;
-
-          await setTimeout(()=>{
-            this.progress = false;
-            this.timeAlert = false;
-            console.log(e);
-          },2500);
-        }
+        },2500);
       }
     }
   },
