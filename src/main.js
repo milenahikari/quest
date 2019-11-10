@@ -14,6 +14,7 @@ import store from './store/index';
 
 import './assets/css/reset.css';
 import './assets/css/public.css';
+import './registerServiceWorker'
 
 middleware();
 Vue.config.productionTip = false;
