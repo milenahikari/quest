@@ -25,8 +25,9 @@
           </div>
         </div>
 
-        <div v-else>
-          <h2>Não encontramos nenhum resultado para sua busca...</h2>
+        <div v-else class="box-not-found">
+          <h2>Não encontramos nenhum resultado...</h2>
+          <v-img :src="require('../../src/assets/img/not-found.svg')" class="img-not-found"/>
         </div>
 
       </v-flex>
@@ -39,8 +40,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-
-import Footer from './Footer.vue';
 import CardMonitor from './CardMonitor.vue';
 
 export default {
@@ -50,7 +49,6 @@ export default {
   },
 
   components: {
-    Footer, 
     CardMonitor,
   },
 
@@ -61,3 +59,16 @@ export default {
   },
 }
 </script>
+
+<style>
+.box-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.img-not-found {
+  width: 50%;
+  margin-top: 20px;
+}
+</style>
