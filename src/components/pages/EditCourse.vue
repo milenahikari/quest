@@ -102,7 +102,7 @@ export default {
   },
 
   async mounted() {
-    const response = await api.get(`/monitors/courses/${this.idCourse}`);
+    const response = await api.get(`/monitors/course/${this.idCourse}`);
 
     this.icon = response.data[0].category.icon;
     this.name = response.data[0].category.name;
