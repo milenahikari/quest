@@ -69,10 +69,10 @@ export default {
     api.get('/gems/colors')
       .then(res => this.colors = res.data)
 
-    await api.get(`/monitors/qrcode/${this.getProfile.id_monitor}`)
-      .then(res => this.idMonitor = res.data.id.toString()) 
+    // await api.get(`/monitors/qrcode/${this.getProfile.id_monitor}`)
+    //   .then(res => this.idMonitor = res.data.id.toString()) 
     
-    api.get(`/monitors/gems/${this.idMonitor}`)
+    api.get(`/monitors/gems/${this.getProfile.id_monitor}`)
       .then(res => this.userMedals = res.data)
 
   },
