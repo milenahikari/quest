@@ -37,7 +37,7 @@
 
         <v-tabs-items v-model="tabs">
           <v-tab-item>
-            <v-form v-model="valid">
+            <v-form ref="form" v-model="valid">
               <v-layout justify-center wrap mt-3>
                 <v-flex>
 
@@ -75,7 +75,7 @@
           </v-tab-item>
 
           <v-tab-item>
-            <v-form v-model="valid">
+            <v-form ref="form" v-model="valid">
               <v-layout justify-center wrap mt-3>
                 <v-flex>
 
@@ -124,7 +124,7 @@
           </v-tab-item>
 
           <v-tab-item>
-            <v-form v-model="valid">
+            <v-form ref="form" v-model="valid">
               <v-layout justify-center wrap mt-3>
                 <v-flex>
 
