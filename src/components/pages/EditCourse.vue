@@ -104,10 +104,10 @@ export default {
   async mounted() {
     const response = await api.get(`/monitors/course/${this.idCourse}`);
 
-    this.icon = response.data[0].category.icon;
-    this.name = response.data[0].category.name;
-    this.title = response.data[0].category.courses[0].title;
-    this.description = response.data[0].category.courses[0].description;
+    this.icon = response.data[0].icon;
+    this.name = response.data[0].name;
+    this.title = response.data[0].title;
+    this.description = response.data[0].description;
 
   },
 
