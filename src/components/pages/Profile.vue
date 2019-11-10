@@ -135,7 +135,7 @@
                     :append-icon="e1 ? 'fas fa-eye' : 'fas fa-eye-slash'"
                     :append-icon-cb="() => (e1 = !e1)"
                     :type="e1 ? 'text' : 'password'"
-                    :rules="passwordRules"
+                    :rules="passwordOldRules"
                     required
                     outline
                   ></v-text-field>
@@ -209,8 +209,12 @@ export default {
       name: '',
       email: '',
       curso: '',
+      passwordOldRules: [
+        v => !!v || 'Senha é obrigatório',       
+      ],
       passwordRules: [
-        v => !!v || 'Senha é obrigatório',        
+        v => !!v || 'Senha é obrigatório',   
+        v => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(v) || 'Mínimo de 8 caracteres, pelo menos uma letra e um número'     
       ],
       nameRequired: [ 
         v => !!v || "Nome é obrigatório",
@@ -223,6 +227,7 @@ export default {
       ],
       phoneRequired: [ 
         v => !!v || "Celular é obrigatório",
+        v => /(\([1-9][0-9]\)|)\s?([0-9]{5})-?([0-9]{4})$/.test(v) || 'Mínimo de 11 caracteres'
       ],
       mask: '(##) #####-####',
       name: '',

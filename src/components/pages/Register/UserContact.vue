@@ -76,7 +76,8 @@ export default {
       valid: false,
       e1: false,
       fiedsRequired: [ 
-        v => !!v || "Preencha o campo celular",
+        v => !!v || "Celular é obrigatório",
+        v => /(\([1-9][0-9]\)|)\s?([0-9]{5})-?([0-9]{4})$/.test(v) || 'Mínimo de 11 caracteres'  
       ],
 
       messageAlert: '',

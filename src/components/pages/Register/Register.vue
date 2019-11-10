@@ -43,7 +43,6 @@
             <v-text-field
               label="Senha"
               v-model="user.password"
-              min="8"
               @keyup.enter="next"
               :append-icon="e1 ? 'fas fa-eye' : 'fas fa-eye-slash'"
               :append-icon-cb="() => (e1 = !e1)"
@@ -101,7 +100,8 @@ export default {
       ],
       
       passwordRules: [
-        v => !!v || 'Senha é obrigatório',        
+        v => !!v || 'Senha é obrigatório',   
+        v => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(v) || 'Mínimo de 8 caracteres, pelo menos uma letra e um número'
       ],
       fiedsRequired: [ 
         v => !!v || "Nome é obrigatório",
