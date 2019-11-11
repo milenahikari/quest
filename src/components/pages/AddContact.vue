@@ -106,7 +106,7 @@ export default {
           }
           
           const responseMonitor = await api.post('/monitor/new', monitor);
-          this.setProfile(responseMonitor.data.success);
+          this.setProfile(responseMonitor.data[0]);
           this.$router.push('/subject');       
 
         } catch(e) {

@@ -136,7 +136,7 @@ export default {
           form.append('photo', photo);
           form.append('id_city', id_city);
           form.append('course', course);
-          form.append('teach', 1); ///Arrumar no ar
+          form.append('teach', teach);
 
           try {
             const response = await api.post('register', form);
