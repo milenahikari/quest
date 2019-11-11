@@ -24,82 +24,95 @@
     >
 
       <v-list>
-        <v-list-tile @click="verPerfil">
-          <v-list-tile-action>
-            <v-icon>fas fa-user-edit</v-icon>
-          </v-list-tile-action>
+        <v-layout mt-2>
+          <v-list-tile @click="verPerfil">
+            <v-list-tile-action>
+              <v-icon>fas fa-user-edit</v-icon>
+            </v-list-tile-action>
 
-          <v-list-tile-content>
-            <v-list-tile-title>Meu perfil</v-list-tile-title>
-          </v-list-tile-content>
-          
-        </v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>Meu perfil</v-list-tile-title>
+            </v-list-tile-content>
+            
+          </v-list-tile>
+        </v-layout>
 
-        <v-list-tile @click="addCourse" v-if="!isMonitor">
-          <v-list-tile-action>
-            <v-icon>fas fa-book-open</v-icon>
-          </v-list-tile-action>
+        <v-layout mt-2>
+          <v-list-tile @click="addCourse" v-if="!isMonitor">
+            <v-list-tile-action>
+              <v-icon>fas fa-book-open</v-icon>
+            </v-list-tile-action>
 
-          <v-list-tile-content>
-            <v-list-tile-title>Criar matéria</v-list-tile-title>
-          </v-list-tile-content>
-          
-        </v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>Criar matéria</v-list-tile-title>
+            </v-list-tile-content>
+            
+          </v-list-tile>
+        </v-layout>
 
-        <v-list-tile @click="myCourses" v-if="isMonitor">
-          <v-list-tile-action>
-            <v-icon>fas fa-chalkboard-teacher</v-icon>
-          </v-list-tile-action>
+        <v-layout mt-2>
+          <v-list-tile @click="myCourses" v-if="isMonitor">
+            <v-list-tile-action>
+              <v-icon>fas fa-chalkboard-teacher</v-icon>
+            </v-list-tile-action>
 
-          <v-list-tile-content>
-            <v-list-tile-title>Minhas Matérias</v-list-tile-title>
-          </v-list-tile-content>
-          
-        </v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>Minhas Matérias</v-list-tile-title>
+            </v-list-tile-content>
+            
+          </v-list-tile>
+        </v-layout>
 
-        <v-list-tile @click="myMedals">
-          <v-list-tile-action>
-            <v-icon>fas fa-medal</v-icon>
-          </v-list-tile-action>
+        <v-layout mt-2>
+          <v-list-tile @click="myMedals">
+            <v-list-tile-action>
+              <v-icon>fas fa-medal</v-icon>
+            </v-list-tile-action>
 
-          <v-list-tile-content>
-            <v-list-tile-title>Medalhas</v-list-tile-title>
-          </v-list-tile-content>
-          
-        </v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>Medalhas</v-list-tile-title>
+            </v-list-tile-content>
+            
+          </v-list-tile>
+        </v-layout>
 
-        <v-list-tile @click="veQrCode" v-if="isMonitor">
-          <v-list-tile-action>
-            <v-icon>fas fa-qrcode</v-icon>
-          </v-list-tile-action>
+        <v-layout mt-2>
+          <v-list-tile @click="veQrCode" v-if="isMonitor">
+            <v-list-tile-action>
+              <v-icon>fas fa-qrcode</v-icon>
+            </v-list-tile-action>
 
-          <v-list-tile-content>
-            <v-list-tile-title>Meu QR Code</v-list-tile-title>
-          </v-list-tile-content>
-          
-        </v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>Meu QR Code</v-list-tile-title>
+            </v-list-tile-content>
+            
+          </v-list-tile>
+        </v-layout>
 
-        <v-list-tile @click="evaluation">
-          <v-list-tile-action>
-            <v-icon>fas fa-star</v-icon>
-          </v-list-tile-action>
+        <v-layout mt-2>
+          <v-list-tile @click="evaluation">
+            <v-list-tile-action>
+              <v-icon>fas fa-star</v-icon>
+            </v-list-tile-action>
 
-          <v-list-tile-content>
-            <v-list-tile-title>Avaliar Aula</v-list-tile-title>
-          </v-list-tile-content>
-          
-        </v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>Avaliar Aula</v-list-tile-title>
+            </v-list-tile-content>   
+          </v-list-tile>
+        </v-layout>
+        
+        <v-layout mt-2>
+          <v-list-tile @click="logOut">
+            <v-list-tile-action>
+              <v-icon>fas fa-sign-out-alt</v-icon>
+            </v-list-tile-action>
 
-        <v-list-tile @click="logOut">
-          <v-list-tile-action>
-            <v-icon>fas fa-sign-out-alt</v-icon>
-          </v-list-tile-action>
-
-          <v-list-tile-content>
-            <v-list-tile-title>Sair</v-list-tile-title>
-          </v-list-tile-content>
-          
-        </v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>Sair</v-list-tile-title>
+            </v-list-tile-content>
+            
+          </v-list-tile>
+        </v-layout>
       </v-list>
       
     </v-navigation-drawer>

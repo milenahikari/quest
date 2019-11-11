@@ -112,3 +112,7 @@ h2 {
   font-size: 12px;
   font-weight: bold;
 }
+.recuo{
+  text-indent: 3em;
+  text-align: justify;
+}

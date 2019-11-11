@@ -68,6 +68,7 @@ export default {
   directives: {
     mask,
   },
+
   data() {
     return {
       user: {
@@ -89,6 +90,7 @@ export default {
       timeAlert: false,
     }
   }, 
+
   methods: {
     clear () {
       this.$refs.form.reset()
@@ -134,6 +136,7 @@ export default {
     })
 
   },
+  
   computed: {
     ...mapGetters({
       getProfile: 'get_profile'

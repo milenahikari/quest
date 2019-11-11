@@ -13,19 +13,19 @@
           <v-icon>fas fa-users</v-icon>
         </v-flex>
         <h2>COOPERAÇÃO</h2>
-        <p>Valorizamos a aprendizagem cooperativa para aumentar a participação dos alunos e o melhorar o desempenho acadêmico.</p>
+        <p class="recuo">Valorizamos a aprendizagem cooperativa para aumentar a participação dos alunos e o melhorar o desempenho acadêmico.</p>
 
         <v-flex align-self-center>
           <v-icon>fas fa-universal-access</v-icon>
         </v-flex>
         <h2>INCLUSÃO</h2>
-        <p>Acreditamos que todos podem contribuir com seus conhecimentos e por isso nos dedicamos a abranger o maior número de pessoas, independente de diferenças sociais.</p>
+        <p class="recuo">Acreditamos que todos podem contribuir com seus conhecimentos e por isso nos dedicamos a abranger o maior número de pessoas, independente de diferenças sociais.</p>
 
         <v-flex align-self-center>
           <v-icon>fas fa-trophy</v-icon>
         </v-flex>
         <h2>SUPERAÇÃO</h2>
-        <p>Percebemos que todos buscam se tornar pessoas melhores e estamos aqui para possibilitar descobrirem ou aumentarem seu potencial.</p>
+        <p class="recuo">Percebemos que todos buscam se tornar pessoas melhores e estamos aqui para possibilitar descobrirem ou aumentarem seu potencial.</p>
       </v-layout>
 
     <Footer></Footer>
