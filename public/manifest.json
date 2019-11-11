@@ -9,32 +9,32 @@
       "type": "image/png"
     },
     {
-      "src": "./img/icons/android-chrome-512x512.jpg",
+      "src": "./img/icons/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/apple-touch-icon-60x60.jpg",
+      "src": "./img/icons/apple-touch-icon-60x60.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/apple-touch-icon-76x76.jpg",
+      "src": "./img/icons/apple-touch-icon-76x76.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/apple-touch-icon-120x120.jpg",
+      "src": "./img/icons/apple-touch-icon-120x120.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/apple-touch-icon-152x152.jpg",
+      "src": "./img/icons/apple-touch-icon-152x152.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/apple-touch-icon-180x180.jpg",
+      "src": "./img/icons/apple-touch-icon-180x180.png",
       "sizes": "512x512",
       "type": "image/png"
     },
@@ -49,17 +49,17 @@
       "type": "image/png"
     },
     {
-      "src": "./img/icons/favicon-32x32.jpg",
+      "src": "./img/icons/favicon-32x32.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/msapplication-icon-144x144.jpg",
+      "src": "./img/icons/msapplication-icon-144x144.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/mstile-150x150.jpg",
+      "src": "./img/icons/mstile-150x150.png",
       "sizes": "512x512",
       "type": "image/png"
     },
