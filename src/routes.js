@@ -19,6 +19,7 @@ import QrCode from './components/pages/QrCode.vue';
 import MonitorContact from './components/pages/MonitorContact.vue';
 import Alert from './components/pages/Alert.vue';
 import EditCourse from './components/pages/EditCourse.vue';
+import AddContact from './components/pages/AddContact.vue';
 import Teste from './components/pages/Teste.vue';
 
 Vue.use(VueRouter);
@@ -126,6 +127,11 @@ const routers = new VueRouter({
       props: true,
       name: 'edit-course',
       component: EditCourse
+    },
+    {
+      path: '/add-contact',
+      name: 'add-contact',
+      component: AddContact
     }
   ]
 });

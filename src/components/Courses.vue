@@ -3,8 +3,15 @@
   <v-layout column>
     <v-flex align-self-end>
       <v-btn 
+        v-if="isLogged"
         class="btn-course"
         @click="btnRouter(router)"
+      >{{txtButton}}</v-btn>
+      
+      <v-btn 
+        v-else
+        class="btn-course"
+        @click="btnRouter('/login')"
       >{{txtButton}}</v-btn>
     </v-flex>
     
@@ -77,17 +84,19 @@
 
 <script>
 import api from '../services/api';
+import { mapGetters } from 'vuex';
 
 export default {
   props: ['txtButton', 'showButton', 'router', 'idMonitor', 'idCourse'],
+
   data() {
     return {
       courses: '',
       dialog: false,
       idDelete:'',
-      idCourse:'',
     }
   },
+
   mounted() {
     api.get(`/monitors/courses/${this.idMonitor}`)
       .then(
@@ -95,6 +104,7 @@ export default {
       )
 
   },
+
   methods: {
     async deleteConfirm(idDelete, idMonitor) {
       console.log(idDelete);
@@ -105,7 +115,7 @@ export default {
         this.$router.go('/my-courses');
 
       } catch(e) {
-        console.log('erro');
+        console.log(e);
       }
     },
 
@@ -116,6 +126,12 @@ export default {
     btnRouter(router) {
       this.$router.push(router);
     }
+  },
+
+  computed: {
+    ...mapGetters({
+      isLogged: 'get_login'
+    })
   },
 }
 </script>

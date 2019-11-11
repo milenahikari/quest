@@ -1,13 +1,17 @@
 <template>
   <v-container grid-list-xl>
 
-    <router-link v-if="isLogged" to="/my-courses">
+    <router-link to="/my-courses">
       <v-icon >fas fa-chevron-left</v-icon>
     </router-link>
 
+    <!--
+    v-if="isLogged"
+    
     <router-link v-else to="/user-contact">
       <v-icon >fas fa-chevron-left</v-icon>
     </router-link>
+    -->
 
     <v-container fluid>
       <v-layout justify-center mb-4>
@@ -125,7 +129,7 @@ export default {
           const id_monitor  = this.monitor.id_monitor;
           const id_category = this.id_category;
 
-          const response = await api.post('course',
+          await api.post('course',
             {...this.course, id_monitor, id_category});
 
           this.$router.push('/');
