@@ -24,26 +24,51 @@
     >
 
       <v-list>
-        <v-list-tile 
-          v-for="(item) in items"
-          :key="item.title"
-          @click="toRouter(item.to)"
-          class="py-2"
-        >
+        <v-list-tile @click="verPerfil">
           <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon>fas fa-user-edit</v-icon>
           </v-list-tile-action>
 
           <v-list-tile-content>
-            <v-list-tile-title>{{ item.name }}</v-list-tile-title>
+            <v-list-tile-title>Meu perfil</v-list-tile-title>
           </v-list-tile-content>
           
         </v-list-tile>
 
-        <v-list-tile
-          @click="veQrCode"
-          v-if="isMonitor"
-        >
+        <v-list-tile @click="addCourse" v-if="!isMonitor">
+          <v-list-tile-action>
+            <v-icon>fas fa-book-open</v-icon>
+          </v-list-tile-action>
+
+          <v-list-tile-content>
+            <v-list-tile-title>Criar matéria</v-list-tile-title>
+          </v-list-tile-content>
+          
+        </v-list-tile>
+
+        <v-list-tile @click="myCourses" v-if="isMonitor">
+          <v-list-tile-action>
+            <v-icon>fas fa-chalkboard-teacher</v-icon>
+          </v-list-tile-action>
+
+          <v-list-tile-content>
+            <v-list-tile-title>Minhas Matérias</v-list-tile-title>
+          </v-list-tile-content>
+          
+        </v-list-tile>
+
+        <v-list-tile @click="myMedals">
+          <v-list-tile-action>
+            <v-icon>fas fa-medal</v-icon>
+          </v-list-tile-action>
+
+          <v-list-tile-content>
+            <v-list-tile-title>Medalhas</v-list-tile-title>
+          </v-list-tile-content>
+          
+        </v-list-tile>
+
+        <v-list-tile @click="veQrCode" v-if="isMonitor">
           <v-list-tile-action>
             <v-icon>fas fa-qrcode</v-icon>
           </v-list-tile-action>
@@ -54,9 +79,18 @@
           
         </v-list-tile>
 
-        <v-list-tile
-          @click="logOut"
-        >
+        <v-list-tile @click="evaluation">
+          <v-list-tile-action>
+            <v-icon>fas fa-star</v-icon>
+          </v-list-tile-action>
+
+          <v-list-tile-content>
+            <v-list-tile-title>Avaliar Aula</v-list-tile-title>
+          </v-list-tile-content>
+          
+        </v-list-tile>
+
+        <v-list-tile @click="logOut">
           <v-list-tile-action>
             <v-icon>fas fa-sign-out-alt</v-icon>
           </v-list-tile-action>
@@ -116,10 +150,35 @@ export default {
       this.drawer = false
     },
 
+    verPerfil() {
+      this.$router.push('/profile')
+      this.drawer = false
+    },
+
     veQrCode() {
       this.$router.push('/qr-code')
       this.drawer = false
-    }
+    },
+    
+    myMedals() {
+      this.$router.push('/medals')
+      this.drawer = false
+    },
+
+    evaluation() {
+      this.$router.push('/evaluation')
+      this.drawer = false
+    },
+
+     addCourse() {
+      this.$router.push('/add-contact')
+      this.drawer = false
+    },
+
+    myCourses() {
+      this.$router.push('/my-courses')
+      this.drawer = false
+    },
 
   },
 
