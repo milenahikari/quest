@@ -32,7 +32,8 @@
         </div>
 
         <div v-else>
-          <h2>Monitores em destaque...</h2>
+        
+          <h2 v-if="destaques.length > 0">Monitores em destaque...</h2>
 
           <div 
             v-for="destaque in destaques"
