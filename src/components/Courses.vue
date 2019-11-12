@@ -112,7 +112,7 @@ export default {
         
         const response = await api.post(`/course/${this.idDelete}`);
         this.dialog = false;
-        this.$router.go('/my-courses');
+        this.$router.push('/');
 
       } catch(e) {
         console.log(e);
