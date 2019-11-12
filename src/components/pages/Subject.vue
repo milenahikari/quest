@@ -125,7 +125,7 @@ export default {
         }
 
         try {
-
+          console.log(this.monitor);
           const id_monitor  = this.monitor.id_monitor;
           const id_category = this.id_category;
 
