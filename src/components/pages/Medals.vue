@@ -7,12 +7,12 @@
     <div class="box-medals">
       <h2>Suas Medalhas</h2>
 
-      <v-layout justify-center mt-3 v-if="!getProfile.teach">
-        <h2>Crie uma matéria para começar a conquistar medalhas!</h2>
+      <v-layout justify-center mt-3 v-if="!getProfile.teach" class="center-text">
+        <p>Crie uma matéria para começar a conquistar medalhas!</p>
       </v-layout>
 
-      <v-layout justify-center mt-3 v-if="userMedals.number==0"> 
-        <h2>Peça para seus alunos te avaliar para conquistar medalhas!</h2>
+      <v-layout justify-center mt-3 v-if="userMedals.number==0" class="center-text"> 
+        <p>Peça para seus alunos te avaliar para conquistar medalhas!</p>
       </v-layout>
       
       <div class="frame mt-4">
@@ -145,5 +145,8 @@ div .frame {
 }
 h2 {
   padding: 10px;
+}
+.center-text {
+  text-align: center;
 }
 </style>

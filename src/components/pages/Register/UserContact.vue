@@ -127,7 +127,7 @@ export default {
           
           const responseMonitor = await api.post('/register/monitor', monitor);
           this.setProfile(responseMonitor.data.success.profile)
-          this.$router.push('/subject');     
+          this.$router.push('/subject-register');     
 
         } catch {
           console.log(e);

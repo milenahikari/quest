@@ -8,6 +8,7 @@ import Register from './components/pages/Register/Register.vue';
 import UserData from './components/pages/Register/UserData.vue';
 import UserContact from './components/pages/Register/UserContact.vue';
 import Subject from './components/pages/Subject.vue';
+import SubjectRegister from './components/pages/SubjectRegister.vue';
 import Profile from './components/pages/Profile.vue';
 import MyCourses from './components/pages/MyCourses.vue';
 import About from './components/pages/About.vue';
@@ -70,6 +71,11 @@ const routers = new VueRouter({
       path: '/subject',
       name: 'subject',
       component: Subject
+    },
+    {
+      path: '/subject-register',
+      name: 'subject-register',
+      component: SubjectRegister
     },
     {
       path: '/profile',

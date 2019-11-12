@@ -132,7 +132,7 @@ export default {
           await api.post('course',
             {...this.course, id_monitor, id_category});
 
-          this.$router.push('/my-courses');
+          this.$router.push('/');
 
         } catch(e) {
           console.log(e);
